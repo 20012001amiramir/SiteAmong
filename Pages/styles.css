@@ -171,6 +171,7 @@ body {
 }
 ::-webkit-input-placeholder { /* WebKit browsers */
     color: rgba(0,0,0,.5);
+}
     /*MAIN PAGE STYLES*/
     a {
     transition: 0.5s;

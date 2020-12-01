@@ -169,8 +169,10 @@ body {
 .login-html .sign-up:checked + .tab + .login-form .sign-up-htm {
     transform: rotate(0);
 }
-/*MAIN PAGE STYLES*/
-a {
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: rgba(0,0,0,.5);
+    /*MAIN PAGE STYLES*/
+    a {
     transition: 0.5s;
 }
 

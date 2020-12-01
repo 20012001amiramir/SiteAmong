@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="https://img.icons8.com/nolan/40/among-us.png" type="image/svg">
     <link rel="stylesheet" href="styles.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Sign in or Sign up</title>
@@ -17,13 +18,14 @@
             <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">SIGN UP</label>
             <div class="login-form">
                 <div class="sign-in-htm">
+                    <form method="get">
                     <div class="group">
                         <label for="user" class="label">USERNAME</label>
-                        <input id="user" type="text" class="input">
+                        <input id="user" type="text" class="input" >
                     </div>
                     <div class="group">
                         <label for="pass" class="label">PASSWORD</label>
-                        <input id="pass" type="password" class="input" data-type="password">
+                        <input id="pass" type="password" class="input" data-type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                     </div>
                     <div class="group">
                         <input id="check" type="checkbox" class="check" checked>
@@ -32,35 +34,37 @@
                     <div class="group">
                         <input type="submit" class="button" value="Sign In">
                     </div>
-
+                    </form>
                 </div>
                 <div class="sign-up-htm">
+                    <form method="get">
                     <div class="group">
                         <label for="user" class="label">USERNAME</label>
                         <input id="user" type="text" class="input">
                     </div>
                     <div class="group">
                         <label for="pass" class="label">PASSWORD</label>
-                        <input id="pass" type="password" class="input" data-type="password">
+                        <input id="pass" type="password" class="input"  placeholder="minimum 1 uppercase letter and 1 digit" data-type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                     </div>
                     <div class="group">
                         <label for="pass" class="label">REPEAT PASSWORD</label>
-                        <input id="pass" type="password" class="input" data-type="password">
+                        <input id="pass" type="password" class="input" data-type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                     </div>
                     <div class="group">
                         <label for="pass" class="label">EMAIL ADDRESS</label>
-                        <input id="pass" type="text" class="input">
+                        <input id="pass" type="text" class="input" placeholder="one@two.three" pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/">
                     </div>
                     <div class="group">
                         <input type="submit" class="button" value="Sign Up">
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
 </html>

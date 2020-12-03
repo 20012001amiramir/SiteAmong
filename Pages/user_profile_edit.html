@@ -6,12 +6,12 @@
     <link rel="icon" href="https://img.icons8.com/nolan/40/among-us.png" type="image/svg">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Home</title>
+    <title>UNREG LAYER</title>
 </head>
 <body>
     <div class="navbar-img" id="headpic">
         <div class="sitename-layout">
-            <h1>HOME</h1>
+            <h1>YOUR PROFILE</h1>
         </div>
     </div>
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -48,16 +48,47 @@
             <div class="my-profile-name">
                 My Profile
             </div>
-            <img src="https://img.icons8.com/plasticine/100/000000/among-us.png" class="my-profile-pic" height="45" width="45"/>
+            <img src="https://img.icons8.com/plasticine/100/000000/among-us.png" class="my-profile-pic" height="45" width="45" />
         </a>
     </nav>
     <div class="main">
-         <div class="home-box">
-             <h1>
-                 ТУДУ <br />
-                 На самом деле я не придумал что сюда засунуть
-             </h1>
-         </div>
+        <div class="profile-wrap">
+            <div class="profile-title">
+                <div class="profile-avatar-box">
+                    <div class="profile-avatar">
+                        <img src="img/slide_1.jpg" height="200px" width="200px" />
+                    </div>
+                    <button class="profile-avatar-changebutton">Change avatar</button>
+                    <div>
+                        <input type="submit" class="profile-avatar-changebutton" value="Submit changes" />
+                    </div>
+                </div>
+                <div class="profile-name">
+                    <h1>Имя профиля</h1>
+                </div>
+            </div>
+            <div class="profile-info edit">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Nickname in Among Us:</label>
+                    <input class="form-control" placeholder="Your nickname">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Age:</label>
+                    <input class="form-control age" placeholder="Your age" maxlength="3">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Sex:</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div>
+            </div>
+            <div class="character-box">
+                место под сами знаете что
+            </div>
+        </div>
     </div>
     <div class="footer">
         <div class="footer-objects">
@@ -68,5 +99,9 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

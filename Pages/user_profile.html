@@ -9,7 +9,7 @@
     <title>UNREG LAYER</title>
 </head>
 <body>
-    <div class="navbar-img">
+    <div class="navbar-img" id="headpic">
         <div class="sitename-layout">
             <h1>YOUR PROFILE</h1>
         </div>
@@ -48,7 +48,7 @@
             <div class="my-profile-name">
                 My Profile
             </div>
-            <img src="https://img.icons8.com/plasticine/100/000000/among-us.png" class="my-profile-pic" height="45" width="45"/>
+            <img src="https://img.icons8.com/plasticine/100/000000/among-us.png" class="my-profile-pic" height="45" width="45" />
         </a>
     </nav>
     <div class="main">
@@ -59,17 +59,18 @@
                         <img src="img/slide_1.jpg" height="200px" width="200px" />
                     </div>
                     <button class="profile-avatar-changebutton">Change avatar</button>
+                    <div>
+                    <a class="profile-avatar-changebutton" type="button" href="user_profile_edit.html">Edit profile</a>
+                    </div>
                 </div>
                 <div class="profile-name">
                     <h1>Имя профиля</h1>
                 </div>
             </div>
             <div class="profile-info">
-                <ol>
-                    <li>пол</li>
-                    <li>возраст</li>
-                    <li>сексуальная ориентация</li>
-                </ol>
+                <h5 class="ingame-nickname">*</h5>
+                <h5 class="age"></h5>
+                <h5 class="sex"></h5>
             </div>
             <div class="character-box">
                 место под сами знаете что
@@ -84,5 +85,9 @@
             <div class="footer-object phone">phone number</div>
         </div>
     </div>
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

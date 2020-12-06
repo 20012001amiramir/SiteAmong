@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
 using GameWebSiteProject.Models;
 using Microsoft.Extensions.Configuration;
 
@@ -13,24 +11,25 @@ namespace GameWebSiteProject.Repository
         public UserRepository(IConfiguration configuration) : base(configuration) { }
 
         public void Insert(User user)
-        {
-            using (var command = new SqlCommand("INSERT INTO User(Id, Username, Password, Email, Sex, Age, Gender, Avatar, About) VALUES(@id, @username, @password, @email, @sex, @age, @gender, @avatar, @about)"))
+        {         
+            using (var command = new SqlCommand("INSERT INTO \"User\" (Id, Username, \"Password\", Email, Sex, Age, Gender, Avatar, About) VALUES" +
+                "(@id, @username, @password, @email, @sex, @age, @gender, @avatar, @about)"))
             {
-                command.Parameters.Add(new SqlParameter("id", user.Id));
+                command.Parameters.Add(new SqlParameter("id", Guid.NewGuid()));
                 command.Parameters.Add(new SqlParameter("username", user.Username));
                 command.Parameters.Add(new SqlParameter("password", user.Password));
                 command.Parameters.Add(new SqlParameter("email", user.Email));
-                command.Parameters.Add(new SqlParameter("sex", user.Sex));
+                command.Parameters.Add(new SqlParameter("sex", "not defined"));
                 command.Parameters.Add(new SqlParameter("age", user.Age));
-                command.Parameters.Add(new SqlParameter("gender", user.Gender));
-                command.Parameters.Add(new SqlParameter("avatar", user.Avatar));
-                command.Parameters.Add(new SqlParameter("about", user.About));
+                command.Parameters.Add(new SqlParameter("gender", "not defined"));
+                command.Parameters.Add(new SqlParameter("avatar", "default"));
+                command.Parameters.Add(new SqlParameter("about", "About Me"));
                 ExecuteNonQuery(command);
             }
         }
         public void Delete(params string [] identfrs)
         {
-            using (var command = new SqlCommand("DELETE FROM User WHERE Username = @username"))
+            using (var command = new SqlCommand("DELETE FROM \"User\" WHERE Username = @username"))
             {
                 command.Parameters.Add(new SqlParameter("username", identfrs[0]));
                 ExecuteNonQuery(command);
@@ -38,10 +37,10 @@ namespace GameWebSiteProject.Repository
         }
         public void Update(User user)
         {
-            using (var command = new SqlCommand("UPDATE User SET Sex = @sex, Age = @age, Gender = @gender," +
-                " Avatar = @avatar, About = @about WHERE Id = @id"))
+            using (var command = new SqlCommand("UPDATE \"User\" SET Sex = @sex, Age = @age, Gender = @gender," +
+                " Avatar = @avatar, About = @about WHERE Username = @username"))
             {
-                command.Parameters.Add(new SqlParameter("id", user.Id));
+                command.Parameters.Add(new SqlParameter("username", user.Username));
                 command.Parameters.Add(new SqlParameter("sex", user.Sex));
                 command.Parameters.Add(new SqlParameter("age", user.Age));
                 command.Parameters.Add(new SqlParameter("gender", user.Gender));
@@ -52,14 +51,14 @@ namespace GameWebSiteProject.Repository
         }
         public IEnumerable<User> GetAll()
         {
-            using (var command = new SqlCommand("SELECT * FROM User"))
+            using (var command = new SqlCommand("SELECT * FROM \"User\""))
             {
                 return GetRecords(command);
             }
         }
         public User GetByIdentfrs(params string[] identfrs)
         {
-            using (var command = new SqlCommand("SELECT * FROM User WHERE Username = @username"))
+            using (var command = new SqlCommand("SELECT * FROM \"User\" WHERE Username = @username"))
             {
                 command.Parameters.Add(new SqlParameter("username", identfrs[0]));
                 return GetRecord(command);
@@ -67,6 +66,7 @@ namespace GameWebSiteProject.Repository
         }
         public override User PopulateRecord(SqlDataReader reader)
         {
+            if (!reader.HasRows) return null;
             return new User
             {
                 Id = reader.GetGuid(0),
@@ -74,7 +74,7 @@ namespace GameWebSiteProject.Repository
                 Password = reader.GetString(2),
                 Email = reader.GetString(3),
                 Sex = reader.GetString(4),
-                Age = reader.GetByte(5),
+                Age = reader.GetInt16(5),
                 Gender = reader.GetString(6),
                 Avatar = reader.GetString(7),
                 About = reader.GetString(8)

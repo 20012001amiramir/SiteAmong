@@ -10,11 +10,7 @@ namespace GameWebSiteProject
     {
         public static void Main(string[] args)
         {
-            User user = new User();
-            user.Id = Guid.NewGuid();
-            user.Username = "Maksim";
-            InsertCommandMaker.Create(user);
-            //CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

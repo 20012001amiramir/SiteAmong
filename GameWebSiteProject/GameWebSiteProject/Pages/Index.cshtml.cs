@@ -5,6 +5,8 @@ using GameWebSiteProject.Repository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Http;
 using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace GameWebSiteProject.Pages
 {
@@ -12,6 +14,7 @@ namespace GameWebSiteProject.Pages
     {
         private readonly IRepository<User> repository;
         public string UsernameValid { get; set; }
+        public string EmailValid { get; set; }
         public string PasswordValid { get; set; }
         public string FieldsValid { get; set; }
         public string LoginValid { get; set; }
@@ -24,19 +27,36 @@ namespace GameWebSiteProject.Pages
             HttpContext.Session.Remove("username");
             return RedirectToPage("Index");
         }
-        public void OnPostRegister(string Username, short Age, string Password, string RepeatPassword, string Email)
+        public void OnGet()
         {
-            if (repository.GetByIdentfrs(Username) == null)
+            
+        }
+        public void OnPostRegister(string Username, DateTime Birthday, string Password, string RepeatPassword, string Email)
+        {
+            if (repository.GetBy("Username", Username) == null)
             {
-                if (RepeatPassword == Password)
+                if(repository.GetBy("Email", Email) == null)
                 {
-                    User user = new User(Username, Password, Email, Age);
-                    repository.Insert(user);
+                    if (RepeatPassword == Password)
+                    {
+                        User user = new User
+                        {
+                            Username = Username,
+                            Password = ComputeHash(Password, new MD5CryptoServiceProvider()),
+                            Email = Email,
+                            Birthday = Birthday
+                        };
+                        repository.Insert(user);
+                    }
+                    else
+                    {
+                        PasswordValid = "Passwords are not equal";
+                    }
                 }
                 else
                 {
-                    PasswordValid = "Passwords are not equal";
-                }
+                    EmailValid = "This e-mail is already used";
+                }             
             }
             else
             {
@@ -45,22 +65,35 @@ namespace GameWebSiteProject.Pages
         }
         public void OnPostLogin(string Username, string Password, string RememberMe)
         {
-            User user_ = repository.GetByIdentfrs(Username);
+            User user_ = repository.GetBy("Username",Username);
             if (user_ != null)
             {
-                User user = new User(Username, Password);
+                User user = new User
+                {
+                    Username = Username,
+                    Password = ComputeHash(Password, new MD5CryptoServiceProvider())
+                };
                 if (user.Password == user_.Password)
                 {
+                    HttpContext.Session.SetString("username", Username);
                     if (RememberMe == "on")
                     {
                         var cookieOptions = new CookieOptions
                         {
-                            Expires = DateTime.Now.AddMinutes(10)
+                            Expires = DateTime.Now.AddMinutes(1)
                         };
                         Response.Cookies.Append("Username", Username, cookieOptions);
                         Response.Cookies.Append("Password", Password, cookieOptions);
                     }
-                    HttpContext.Session.SetString("username", Username);
+                    else
+                    {
+                        var cookieOptions = new CookieOptions
+                        {
+                            Expires = DateTime.Now.AddMinutes(-1)
+                        };
+                        Response.Cookies.Append("Username", Username, cookieOptions);
+                        Response.Cookies.Append("Password", Password, cookieOptions);
+                    }
                 }
                 else
                 {
@@ -72,6 +105,14 @@ namespace GameWebSiteProject.Pages
                 LoginValid = "Your username or password are wrong. Try again";
             }
         }
-       
+        private string ComputeHash(string input, HashAlgorithm algorithm)
+        {
+            Byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+
+            Byte[] hashedBytes = algorithm.ComputeHash(inputBytes);
+
+            return BitConverter.ToString(hashedBytes);
+        }
+
     }
 }

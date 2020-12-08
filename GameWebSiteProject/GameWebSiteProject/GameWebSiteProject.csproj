@@ -5,12 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    <Folder Include="wwwroot\avatars\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\avatars\" />
-    <Folder Include="DBContext\" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 
 </Project>

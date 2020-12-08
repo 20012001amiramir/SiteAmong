@@ -1,32 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
 namespace GameWebSiteProject.CommandMaker
 {
-    public static class CommonCommandMaker
+    public static class CommonCommandMaker<T> where T:class
     {
-        //public static string GetTableName(object obj)
-        //{
-        //    var result = new StringBuilder();
-        //    result.Append(obj.GetType());
-            
-        //    var attributes = type.GetCustomAttributes(true);
-
-        //    foreach (var attr in attributes.OfType<TableNameAttribute>())
-        //    {
-        //        tableName = attr.Value;
-        //        break;
-        //    }
-        //    return tableName;
-        //}
-        //private static SqlParameter[] CreateParameters(object obj)
-        //{
-        //    var type = obj.GetType();
-        //    var fields = type.GetFields();
-        //    SqlParameter[] sqlParameters = new SqlParameter[fields.Length];
-        //    foreach (var x in obj)
-
-        //}
+        public static void AddParameters(T obj, SqlCommand command)
+        {
+            var properties = obj.GetType().GetProperties();
+            foreach (var x in properties)
+            {
+                command.Parameters.Add(new SqlParameter($"@{x.Name}", x.GetValue(obj)));
+            }
+        }
+        public static void AddParameter(string column, string value, SqlCommand command)
+        {
+            command.Parameters.Add(new SqlParameter($"@{column}", value));
+        }
+        public static string WhereConditionCreate(string column)
+        {
+            var where = new StringBuilder();
+            where.Append($"WHERE \"{column}\" = @{column}");       
+            return where.ToString();
+        }
     }
 }

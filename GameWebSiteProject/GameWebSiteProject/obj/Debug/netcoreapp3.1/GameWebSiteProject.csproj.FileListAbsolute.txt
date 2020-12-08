@@ -28,6 +28,11 @@ D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProjec
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\bin\Debug\netcoreapp3.1\GameWebSiteProject.pdb
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\bin\Debug\netcoreapp3.1\GameWebSiteProject.Views.dll
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\bin\Debug\netcoreapp3.1\GameWebSiteProject.Views.pdb
+D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\GameWebSiteProject.Views.pdb
+D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\GameWebSiteProject.csproj.CopyComplete
+D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\GameWebSiteProject.dll
+D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\GameWebSiteProject.pdb
+D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\GameWebSiteProject.genruntimeconfig.cache
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
@@ -36,8 +41,3 @@ D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProjec
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\GameWebSiteProject.csproj.CoreCompileInputs.cache
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\GameWebSiteProject.MvcApplicationPartsAssemblyInfo.cache
-D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\GameWebSiteProject.Views.pdb
-D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\GameWebSiteProject.csproj.CopyComplete
-D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\GameWebSiteProject.dll
-D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\GameWebSiteProject.pdb
-D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\GameWebSiteProject.genruntimeconfig.cache

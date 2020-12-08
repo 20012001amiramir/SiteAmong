@@ -5,16 +5,16 @@ using System.Text;
 
 namespace GameWebSiteProject.CommandMaker
 {
-    public static class InsertCommandMaker
+    public static class InsertCommandMaker<T> where T:class
     {
-        public static SqlCommand Create(object obj)
+        public static SqlCommand Create(T obj)
         {
             SqlCommand result = new SqlCommand();
             result.CommandText = CreateCommandText(obj);
-            AddParameters(obj, result);         
+            CommonCommandMaker<T>.AddParameters(obj, result);         
             return result;
         }
-        public static string CreateCommandText(object obj)
+        private static string CreateCommandText(T obj)
         {
             StringBuilder commandText = new StringBuilder();
             var tableName = '\"' + obj.GetType().Name + '\"';
@@ -23,26 +23,16 @@ namespace GameWebSiteProject.CommandMaker
             commandText.Append($"INSERT INTO {tableName} ({columns}) VALUES({values})");
             return commandText.ToString();
         }
-        private static string CreateValuesString(object obj)
+        private static string CreateValuesString(T obj)
         {
             var columns = new StringBuilder();
-            var fields = obj.GetType().GetProperties();
-            for(int i=0; i < fields.Length-1; i++)
-            {
-                columns.Append('\"' + "@" + fields[i].Name + '\"' + ", ");
-            }
-            columns.Append('\"' + "@" + fields[fields.Length - 1].Name + '\"');
-            return columns.ToString();
-        }
-        private static void AddParameters(object obj, SqlCommand command)
-        {
             var properties = obj.GetType().GetProperties();
-            List<SqlParameter> parameters = new List<SqlParameter>();
-            foreach (var x in properties)
+            for(int i=0; i < properties.Length-1; i++)
             {
-                command.Parameters.Add(new SqlParameter($"@{x.Name}", x.GetValue(obj)));
+                columns.Append('\"' + "@" + properties[i].Name + '\"' + ", ");
             }
-        }
-        
+            columns.Append('\"' + "@" + properties[properties.Length - 1].Name + '\"');
+            return columns.ToString();
+        }       
     }
 }

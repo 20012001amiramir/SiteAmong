@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Data.SqlClient;
+using GameWebSiteProject.DBContext;
 
 namespace GameWebSiteProject.Repository
 {
@@ -8,6 +10,6 @@ namespace GameWebSiteProject.Repository
         void Update(T item);
         void Delete(params string[] identfrs);
         IEnumerable<T> GetAll();
-        T GetByIdentfrs(params string[] identfrs);
+        T GetBy(string column, string value);
     }
 }

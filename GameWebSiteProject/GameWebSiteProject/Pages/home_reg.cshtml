@@ -1,0 +1,13 @@
+﻿@page
+@model GameWebSiteProject.Pages.home_regModel
+@{
+}
+@using Microsoft.AspNetCore.Http;
+<div class="main">
+    <div class="home-box">
+        <h1>
+            Welcome, @HttpContext.Session.GetString("username")!
+            <img src="https://4pubg.com/wp-content/uploads/2020/10/among-us.png"/>
+        </h1>
+    </div>
+</div>

@@ -63,7 +63,7 @@ namespace GameWebSiteProject.Pages
                 UsernameValid = "This username is already used";
             }
         }
-        public void OnPostLogin(string Username, string Password, string RememberMe)
+        public IActionResult OnPostLogin(string Username, string Password, string RememberMe)
         {
             User user_ = repository.GetBy("Username",Username);
             if (user_ != null)
@@ -80,7 +80,7 @@ namespace GameWebSiteProject.Pages
                     {
                         var cookieOptions = new CookieOptions
                         {
-                            Expires = DateTime.Now.AddMinutes(1)
+                            Expires = DateTime.Now.AddMinutes(100)
                         };
                         Response.Cookies.Append("Username", Username, cookieOptions);
                         Response.Cookies.Append("Password", Password, cookieOptions);
@@ -94,6 +94,7 @@ namespace GameWebSiteProject.Pages
                         Response.Cookies.Append("Username", Username, cookieOptions);
                         Response.Cookies.Append("Password", Password, cookieOptions);
                     }
+                    return RedirectToPage("home_reg");
                 }
                 else
                 {
@@ -104,6 +105,7 @@ namespace GameWebSiteProject.Pages
             {
                 LoginValid = "Your username or password are wrong. Try again";
             }
+            return Page();
         }
         private string ComputeHash(string input, HashAlgorithm algorithm)
         {

@@ -402,7 +402,7 @@ a {
     margin-right: auto;
 }
 .home-box {
-    display: block;
+    display: flex;
     margin-left: auto;
     margin-right: auto;
     background-color: rgb(155, 108, 206);
@@ -434,7 +434,7 @@ a {
     margin-right: auto;
     background-color: rgb(155, 108, 206);
     padding: 10px 10px 10px 10px;
-    width: 45%;
+    width: 70%;
     height: 700px;
     border: groove;
     border-color: rgb(155, 108, 206);

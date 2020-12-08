@@ -31,7 +31,7 @@ namespace GameWebSiteProject.Pages
         {
             
         }
-        public void OnPostRegister(string Username, DateTime Birthday, string Password, string RepeatPassword, string Email)
+        public void OnPostRegister(string Username, string Nickname, DateTime Birthday, string Password, string RepeatPassword, string Email)
         {
             if (repository.GetBy("Username", Username) == null)
             {
@@ -42,6 +42,7 @@ namespace GameWebSiteProject.Pages
                         User user = new User
                         {
                             Username = Username,
+                            Nickname = Nickname,
                             Password = ComputeHash(Password, new MD5CryptoServiceProvider()),
                             Email = Email,
                             Birthday = Birthday

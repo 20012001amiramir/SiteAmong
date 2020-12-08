@@ -3,7 +3,6 @@
 @{
     Layout = null;
 }
-@using Microsoft.AspNetCore.Http
 
 <!doctype html>
 <html lang="en">
@@ -50,6 +49,10 @@
                             <label for="user" class="label">USERNAME</label>
                             <input name="Username" id="user" type="text" class="input" maxlength="15" required>
                             <span class="text-danger field-validation-valid">@Model.UsernameValid</span>
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">NICKNAME IN GAME</label>
+                            <input name="Nickname" type="text" class="input" required>
                         </div>
                         <div class="group">
                             <label for="user" class="label">BIRTHDAY</label>

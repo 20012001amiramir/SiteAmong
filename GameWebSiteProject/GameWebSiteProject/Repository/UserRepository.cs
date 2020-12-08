@@ -18,8 +18,7 @@ namespace GameWebSiteProject.Repository
         {
             user.Id = Guid.NewGuid();
             user.Sex = "not defined";
-            user.Gender = "not defined";
-            user.Avatar = "default";
+            user.Avatar = "default.jpg";
             user.About = "About Me";
             DbContext.Add(user);
         }

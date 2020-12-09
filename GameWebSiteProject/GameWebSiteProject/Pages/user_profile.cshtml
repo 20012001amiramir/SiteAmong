@@ -1,18 +1,18 @@
 ﻿@page
 @model GameWebSiteProject.Pages.user_profileModel
 @{
+    ViewData["Title"] = "YOUR PROFILE";
 }
 @using Microsoft.AspNetCore.Http;
 <div class="main">
     <div class="profile-wrap">
         <div class="profile-title">
-            <div class="profile-avatar-box">
+            <div>
                 <div class="profile-avatar">
-                    <img src="~/avatars/@Model.Avatar" height="200px" width="200px" />
-                </div>
-                <input type="file" class="profile-avatar-changebutton" />
+                    <img src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Avatar))" height="216px" width="384px" />
+                </div>               
                 <div>
-                    <a class="profile-avatar-changebutton" type="button" href="user_profile_edit.html">Edit profile</a>
+                    <a class="profile-avatar-changebutton" type="button" asp-page="user_profile_edit">Edit profile</a>
                 </div>
             </div>
             <div class="profile-name">

@@ -23,6 +23,23 @@ namespace GameWebSiteProject.DBContext
                 ExecuteNonQuery(connection, command);
             }              
         }
+
+        public T GetBy(string column, string value, Type type)
+        {
+            using (SqlCommand command = SelectWhereCommandMaker<T>.Create(column, value, type))
+            {
+                return ExecuteReader(connection, command);
+            }
+        }
+
+        public void Update(T obj)
+        {
+            using (SqlCommand command = UpdateWhereCommandMaker<T>.Create(obj))
+            {
+                ExecuteNonQuery(connection, command);
+            }
+        }
+
         public void DeleteWhere(params string[] identfrs)
         {
             throw new System.NotImplementedException();
@@ -32,18 +49,7 @@ namespace GameWebSiteProject.DBContext
         {
             throw new System.NotImplementedException();
         }        
-        public T GetBy(string column, string value, Type type)
-        {
-            using (SqlCommand command = SelectWhereCommandMaker<T>.Create(column, value, type))
-            {
-                return ExecuteReader(connection, command);
-            }              
-        }
-
-        public void Update(T obj)
-        {
-            throw new System.NotImplementedException();
-        }
+            
         public override T PopulateRecord(SqlDataReader reader)
         {
             T record = new T();

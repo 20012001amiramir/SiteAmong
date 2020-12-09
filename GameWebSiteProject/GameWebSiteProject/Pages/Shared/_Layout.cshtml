@@ -6,16 +6,16 @@
     <link rel="icon" href="https://img.icons8.com/nolan/40/among-us.png" type="image/svg">
     <link rel="stylesheet" type="text/css" href="~/css/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Home</title>
+    <title>@ViewData["Title"]</title>
 </head>
 <body>
-    <div class="navbar-img" id="headpic">
+    <div class="navbar-img" id="headpic" style="background-image:url(../../wwwroot/css/images/headerpic.png)">
         <div class="sitename-layout">
-            <h1>HOME</h1>
+            <h1>@ViewData["Title"]</h1>
         </div>
     </div>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="home_reg.html">AMONGPROFILE</a>
+        <a class="navbar-brand" asp-page="home_reg">AMONGPROFILE</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse navbar" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="home_reg.html">Home</a>
+                    <a class="nav-link" asp-page="home_reg">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="chat.html">Forum</a>
@@ -39,24 +39,18 @@
                 </li>
             </ul>
         </div>
-        <div>
-            <div class="search-wrapper">
-                <form>
-                    <input type="text" name="focus" required class="search-box" placeholder="Search" />
-                </form>
-            </div>
-            <a asp-page="user_profile" class="my-profile">
-                <div class="my-profile-name">
-                    My Profile
-                </div>
-                <img src="https://img.icons8.com/plasticine/100/000000/among-us.png" class="my-profile-pic" height="45" width="45" />
-
-            </a>
-            <a asp-page="index" asp-page-handler="logout">
-                Logout
-            </a>
+        <div class="search-wrapper">
+            <form>
+                <input type="text" name="focus" required class="search-box" placeholder="Search" />
+            </form>
         </div>
-
+        <a asp-page="user_profile" class="my-profile">
+            <div class="my-profile-name">
+                My Profile
+            </div>
+            <img src="https://img.icons8.com/plasticine/100/000000/among-us.png" class="my-profile-pic" height="45" width="45" />
+        </a>
+        <a asp-page="Index" asp-page-handler="Logout">Logout</a>
     </nav>
     <div class="container">
         <main role="main" class="pb-3">

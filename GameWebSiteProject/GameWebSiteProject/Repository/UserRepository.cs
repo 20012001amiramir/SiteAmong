@@ -18,13 +18,16 @@ namespace GameWebSiteProject.Repository
         {
             user.Id = Guid.NewGuid();
             user.Sex = "not defined";
-            user.Avatar = "default.jpg";
             user.About = "About Me";
             DbContext.Add(user);
         }
         public User GetBy(string column, string value)
         {
            return DbContext.GetBy(column, value, new User().GetType());
+        }
+        public void Update(User user)
+        {
+            DbContext.Update(user);
         }
         //public void Delete(params string [] identfrs)
         //{
@@ -34,20 +37,7 @@ namespace GameWebSiteProject.Repository
         //        ExecuteNonQuery(command);
         //    }
         //}
-        //public void Update(User user)
-        //{
-        //    using (var command = new SqlCommand("UPDATE \"User\" SET Sex = @sex, Age = @age, Gender = @gender," +
-        //        " Avatar = @avatar, About = @about WHERE Username = @username"))
-        //    {
-        //        command.Parameters.Add(new SqlParameter("username", user.Username));
-        //        command.Parameters.Add(new SqlParameter("sex", user.Sex));
-        //        command.Parameters.Add(new SqlParameter("age", user.Age));
-        //        command.Parameters.Add(new SqlParameter("gender", user.Gender));
-        //        command.Parameters.Add(new SqlParameter("avatar", user.Avatar));
-        //        command.Parameters.Add(new SqlParameter("about", user.About));
-        //        ExecuteNonQuery(command);
-        //    }
-        //}
+
         //public IEnumerable<User> GetAll()
         //{
         //    using (var command = new SqlCommand("SELECT * FROM \"User\""))
@@ -56,10 +46,6 @@ namespace GameWebSiteProject.Repository
         //    }
         //}
 
-        public void Update(User item)
-        {
-            throw new NotImplementedException();
-        }
 
         public void Delete(params string[] identfrs)
         {

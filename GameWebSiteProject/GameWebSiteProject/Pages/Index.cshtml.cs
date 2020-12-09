@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Security.Cryptography;
 using System.Text;
+using System.IO;
 
 namespace GameWebSiteProject.Pages
 {
@@ -24,14 +25,14 @@ namespace GameWebSiteProject.Pages
         }
         public IActionResult OnGetLogout()
         {
-            HttpContext.Session.Remove("username");
+            HttpContext.Session.Remove("id");
             return RedirectToPage("Index");
         }
         public void OnGet()
         {
             
         }
-        public void OnPostRegister(string Username, string Nickname, DateTime Birthday, string Password, string RepeatPassword, string Email)
+        public void OnPostRegister(IFormFile Avatar, string Username, string Nickname, DateTime Birthday, string Password, string RepeatPassword, string Email)
         {
             if (repository.GetBy("Username", Username) == null)
             {
@@ -39,14 +40,21 @@ namespace GameWebSiteProject.Pages
                 {
                     if (RepeatPassword == Password)
                     {
+                        byte[] imageData = null;
+                        using (var binaryReader = new BinaryReader(Avatar.OpenReadStream()))
+                        {
+                            imageData = binaryReader.ReadBytes((int)Avatar.Length);
+                        }
+                        // установка массива байтов                      
                         User user = new User
                         {
                             Username = Username,
                             Nickname = Nickname,
                             Password = ComputeHash(Password, new MD5CryptoServiceProvider()),
                             Email = Email,
-                            Birthday = Birthday
-                        };
+                            Age = GetAge(Birthday),
+                            Avatar = imageData
+                    };
                         repository.Insert(user);
                     }
                     else
@@ -76,7 +84,7 @@ namespace GameWebSiteProject.Pages
                 };
                 if (user.Password == user_.Password)
                 {
-                    HttpContext.Session.SetString("username", Username);
+                    HttpContext.Session.SetString("id", user_.Id.ToString());
                     if (RememberMe == "on")
                     {
                         var cookieOptions = new CookieOptions
@@ -115,6 +123,13 @@ namespace GameWebSiteProject.Pages
             Byte[] hashedBytes = algorithm.ComputeHash(inputBytes);
 
             return BitConverter.ToString(hashedBytes);
+        }
+        private short GetAge(DateTime birthday)
+        {
+            DateTime now = DateTime.Today;
+            int age = now.Year - birthday.Year;
+            if (birthday > now.AddYears(-age)) age--;
+            return (short)age;
         }
 
     }

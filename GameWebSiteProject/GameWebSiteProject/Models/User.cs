@@ -10,8 +10,8 @@ namespace GameWebSiteProject.Models
         public string Password { get; set; }
         public string Email { get; set; }
         public string Sex { get; set; }
-        public DateTime Birthday { get; set; }
-        public string Avatar { get; set; }
+        public short Age { get; set; }
+        public byte[] Avatar { get; set; }
         public string About { get; set; }
         
     }

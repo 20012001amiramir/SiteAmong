@@ -1,0 +1,50 @@
+﻿@page
+@model GameWebSiteProject.Pages.user_profile_editModel
+@{
+    ViewData["Title"] = "YOUR PROFILE";
+}
+
+<div class="main">
+    <form method="post" enctype="multipart/form-data">
+        <div class="profile-wrap">
+            <div class="profile-title">
+                <div class="profile-avatar-box">
+                    <div class="profile-avatar">
+                        <h3 style="color:#9C4973">Your current avatar</h3>
+                        <img src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Avatar))" height="216px" width="384px" />
+                    </div>
+                    <div class="profile-avatar">
+                        <h3 style="color:#9C4973">Your new avatar</h3>
+                        <img height="216px" width="384px" id="blah" src="#" />
+                    </div>
+                </div>
+            </div>
+            <input name="Avatar" placeholder="Choose your new avatar" type="file" id="imgInp" class="form-control" style="margin-top:10px" />
+            <input type="submit" class="profile-avatar-changebutton" asp-page-handler="Edit" value="Submit changes" />
+            <div id="newInfo">
+                <div class="profile-info edit">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Nickname in Among Us:</label>
+                        <input style="width:300px" name="NewNickname" class="form-control" placeholder="New nickname" value="@Model.Nickname" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Age:</label>
+                        <input style="width:300px" name="NewAge" class="form-control age" placeholder="New age" value="@Model.Age" maxlength="3" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Sex:</label>
+                        <select style="width:300px" name="NewSex" class="form-control" id="exampleFormControlSelect1">
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="character-box">
+                    <label for="exampleFormControlSelect1">Tell us about You</label>
+                    <textarea name="NewAbout" id="newInfoInput" class="form-control" style="resize:none; height:300px">@Model.About</textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

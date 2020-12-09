@@ -1,31 +1,33 @@
 * {
     margin: 0;
     padding: 0;
-    outline:none!important;
+    outline: none !important;
 }
 
 body {
     color: #6a6f8c;
     font: 600 16px/18px "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color: rgb(213, 201, 234) !important;
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
 }
+
 .sitename h1 {
     font-size: 48.5px;
     color: #685088;
 }
 /*SIGN PAGE STYLES*/
 .login-wrap {
-    margin-top:40px;
+    margin-top: 40px;
     width: 100%;
-    margin-bottom:auto;
-    margin-left:auto;
-    margin-right:auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 525px;
     min-height: 670px;
     position: relative;
     box-shadow: 0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+    overflow-y:auto;
 }
 
 .login-html {
@@ -169,11 +171,12 @@ body {
 .login-html .sign-up:checked + .tab + .login-form .sign-up-htm {
     transform: rotate(0);
 }
+
 ::-webkit-input-placeholder { /* WebKit browsers */
     color: rgba(0,0,0,.5);
 }
-    /*MAIN PAGE STYLES*/
-    a {
+/*MAIN PAGE STYLES*/
+a {
     transition: 0.5s;
 }
 
@@ -181,7 +184,12 @@ body {
         text-decoration: none !important;
     }
 
-
+.navbar-img {
+    display: flex;
+    height: 300px;
+    width: auto;
+    background: url(img/headerpic.png) center right;
+}
 
 .sitename-layout h1 {
     font-size: 135px;
@@ -260,6 +268,7 @@ body {
     margin: 0px 100px 3px 15px;
     color: rgba(0,0,0,.5);
 }
+
 .sign-button {
     border: none !important;
     background-color: rgb(217,192,228);
@@ -267,14 +276,16 @@ body {
     border-radius: 3px;
     padding: 5px 20px 5px 20px;
 }
+
     .sign-button:hover {
         transition: 0.3s;
         background-color: rgb(193,135,214);
     }
-    .sign-button:active,focus,checked{
-        outline:none!important;
-        border-radius:5px;
-        box-shadow:inset;
+
+    .sign-button:active, focus, checked {
+        outline: none !important;
+        border-radius: 5px;
+        box-shadow: inset;
     }
 /*About pages*/
 .about-box {
@@ -286,11 +297,12 @@ body {
     padding: 25px 20px 40px 20px;
     margin: 50px 100px 50px 100px;
 }
-.about-title{
-    
+
+.about-title {
 }
-.about-text{
-    font-size:20px;
+
+.about-text {
+    font-size: 20px;
 }
 
 form, p, span {
@@ -316,10 +328,10 @@ a {
     padding-bottom: 30px;
     background: #EBF4FB;
     width: 70%;
-    background-color:rgb(155, 108, 206);
-    display:flex;
-    flex-direction:column;
-    border-radius:1px;
+    background-color: rgb(155, 108, 206);
+    display: flex;
+    flex-direction: column;
+    border-radius: 1px;
 }
 
 #loginform {
@@ -370,6 +382,7 @@ a {
 .msgln {
     margin: 0 0 2px 0;
 }
+
 .submitmsg {
     border: none !important;
     background-color: rgb(217,192,228);
@@ -379,6 +392,7 @@ a {
     margin-right: 50px;
     border-radius: 1px;
 }
+
     .submitmsg:hover {
         transition: 0.3s;
         background-color: rgb(193,135,214);
@@ -389,11 +403,13 @@ a {
         border-radius: 5px;
         box-shadow: inset;
     }
-.message{
-    display:flex;
-    flex-direction:row;
-    margin-left:50px;
+
+.message {
+    display: flex;
+    flex-direction: row;
+    margin-left: 50px;
 }
+
 .carousel {
     width: 60%;
     height: 50%;
@@ -401,15 +417,18 @@ a {
     margin-left: auto;
     margin-right: auto;
 }
+
 .home-box {
-    display: flex;
+    display: block;
+    justify-content:space-evenly;
     margin-left: auto;
     margin-right: auto;
     background-color: rgb(155, 108, 206);
     padding: 30px 50px 30px 50px;
-    text-align:center;
-    color:rgba(0,0,0,.5);
+    text-align: center;
+    color: rgba(0,0,0,.5);
 }
+
 .costumes-wrap {
     display: block;
     margin-left: auto;
@@ -418,6 +437,7 @@ a {
     color: rgba(0,0,0,.5);
     text-align: center;
 }
+
 .costumes-box {
     display: block;
     margin-left: auto;
@@ -427,6 +447,7 @@ a {
     text-align: center;
     color: rgba(0,0,0,.5);
 }
+
 .profile-wrap {
     display: flex;
     flex-direction: column;
@@ -434,33 +455,46 @@ a {
     margin-right: auto;
     background-color: rgb(155, 108, 206);
     padding: 10px 10px 10px 10px;
-    width: 70%;
-    height: 700px;
+    width: 90%;
+    height: 800px;
+    max-height:800px;
     border: groove;
     border-color: rgb(155, 108, 206);
+    overflow-y:auto;
 }
+
 .profile-title {
     display: flex;
     flex-direction: row;
     padding: 20px 20px 20px 20px;
     margin: 5px 5px 5px 5px;
 }
+
 .profile-name {
     color: rgba(0,0,0,.5);
     width: 50%;
-    margin-left:10px;
+    margin-left: 10px;
+}
 
+.profile-avatar {
+    border: groove;
+    border-radius: 4px;
 }
-.profile-avatar{
-    border:groove;
-    border-radius:4px;
+
+.profile-avatar-box{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-evenly;
+    width:100%;
 }
+
 .profile-avatar-changebutton {
-    margin-top:5px;
+    margin-top: 5px;
     border: none !important;
     background-color: rgb(217,192,228);
     color: rgba(0,0,0,.5);
-    border-radius:2px;
+    border-radius: 2px;
     padding: 5px 20px 5px 20px;
 }
 
@@ -473,24 +507,33 @@ a {
         outline: none !important;
         box-shadow: inset;
     }
+
 .profile-info {
     color: rgba(0,0,0,.5);
-    margin-left:40px;
+    margin-left: 40px;
 }
-.profile-info edit{
-    padding: 20px 20px 20px 20px;
-    margin: 20px 20px 20px 20px;
+
+    .profile-info edit {
+        padding: 20px 20px 20px 20px;
+        margin: 20px 20px 20px 20px;
+    }
+#newInfo{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-evenly;
 }
 .character-box {
     background-color: grey;
-    width: 500px;
+    width: 85%;
     height: 400px;
     padding: 20px 20px 20px 20px;
     margin: 20px 20px 20px 20px;
-    
+    overflow-y:auto;
 }
-.form-group{
-    width:40%;
-    position:relative;
-    right:19px;
+
+.form-group {
+    width: 40%;
+    position: relative;
+    right: 19px;
 }

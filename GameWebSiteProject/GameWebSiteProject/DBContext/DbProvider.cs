@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using GameWebSiteProject.CommandMaker;
-using GameWebSiteProject.Repository;
 using System;
 using System.Reflection;
 
@@ -28,7 +27,7 @@ namespace GameWebSiteProject.DBContext
         {
             using (SqlCommand command = SelectWhereCommandMaker<T>.Create(column, value, type))
             {
-                return ExecuteReader(connection, command);
+                return GetRecord(connection, command);
             }
         }
 
@@ -40,16 +39,19 @@ namespace GameWebSiteProject.DBContext
             }
         }
 
-        public void DeleteWhere(params string[] identfrs)
+        public IEnumerable<T> GetAll(Type type)
+        {
+            using (SqlCommand command = SelectCommandMaker<T>.Create(type))
+            {
+                return GetRecords(connection, command);
+            }
+        }
+
+        public void DeleteWhere(string column, string value, Type type)
         {
             throw new System.NotImplementedException();
         }
-
-        public ICollection<T> GetAll()
-        {
-            throw new System.NotImplementedException();
-        }        
-            
+          
         public override T PopulateRecord(SqlDataReader reader)
         {
             T record = new T();

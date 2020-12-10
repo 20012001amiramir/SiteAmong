@@ -14,24 +14,28 @@ namespace GameWebSiteProject.Pages
     public class IndexModel : PageModel
     {
         private readonly IRepository<User> repository;
+
         public string UsernameValid { get; set; }
+
         public string EmailValid { get; set; }
+
         public string PasswordValid { get; set; }
+
         public string FieldsValid { get; set; }
+
         public string LoginValid { get; set; }
+
         public IndexModel(IConfiguration configuration)
         {
             this.repository = new UserRepository(configuration);
         }
+
         public IActionResult OnGetLogout()
         {
             HttpContext.Session.Remove("id");
             return RedirectToPage("Index");
         }
-        public void OnGet()
-        {
-            
-        }
+ 
         public void OnPostRegister(IFormFile Avatar, string Username, string Nickname, DateTime Birthday, string Password, string RepeatPassword, string Email)
         {
             if (repository.GetBy("Username", Username) == null)
@@ -45,7 +49,7 @@ namespace GameWebSiteProject.Pages
                         {
                             imageData = binaryReader.ReadBytes((int)Avatar.Length);
                         }
-                        // установка массива байтов                      
+                        
                         User user = new User
                         {
                             Username = Username,
@@ -103,7 +107,7 @@ namespace GameWebSiteProject.Pages
                         Response.Cookies.Append("Username", Username, cookieOptions);
                         Response.Cookies.Append("Password", Password, cookieOptions);
                     }
-                    return RedirectToPage("home_reg");
+                    return RedirectToPage("Home_reg");
                 }
                 else
                 {

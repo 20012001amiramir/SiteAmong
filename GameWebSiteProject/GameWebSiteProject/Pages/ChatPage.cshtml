@@ -1,0 +1,69 @@
+﻿@page
+@model GameWebSiteProject.Pages.ChatPageModel
+@{
+}
+
+@using Microsoft.AspNetCore.Http;
+
+
+<div id="chatPageCenter">
+    <div class="row top-space">
+        <div class="col-lg-12">
+            <div id="welcome" style="padding-bottom:10px">
+                <h1><strong>Welcome to Chat!</strong></h1>
+                <input value="@HttpContext.Session.GetString("id")" id="userid" style="display:none" />
+
+            </div>
+            <div id="input">
+                <input class="form-control" id="subject" placeholder="Enter subject..." />
+                <input class="form-control" id="message-content" placeholder="Enter message..." />
+                <label></label>
+            </div>
+            <div id="messenger">
+                <ul id="messages" style="list-style-type:none;">
+                  @foreach (var x in Model.SortedHistory)
+                  {
+                    var user = Model.GetUser(x.User_Id);
+                    <li id="row">
+                        <div id="message-body">
+                            <div id="desc">
+                                <img id="messageAvatar" src="data:image/jpeg; base64, @(Convert.ToBase64String(user.Avatar))">
+                                <h4> <strong>@user.Username</strong></h4>
+                                <h5> <strong>"@x.Subject"</strong></h5>
+                            </div>
+                            <div id="message-con">
+                                <p id="messageText"><strong>@x.Content</strong></p>
+                                <strong id="messageDate">@x.DateSent</strong>
+                            </div>
+                        </div>
+                    </li>
+                  }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script data-main="scripts/main" src="https://rawgit.com/radu-matei/websocket-manager/master/src/WebSocketManager.Client.TS/dist/WebSocketManager.js"></script>
+}
+
+@*<div class="row top-space">
+        <div class="col-lg-12">
+            <div id="welcome" style="padding-bottom:10px">
+                <h1><strong>Welcome to Chat!</strong></h1>
+                <input value="@HttpContext.Session.GetString("id")" id="userid" style="display:none" />
+            </div>
+            <div>
+                <input class="form-control" id="subject" placeholder="Enter subject..." />
+                <input class="form-control" id="message-content" placeholder="Enter your message..." />
+            </div>
+            <div id="messenger">
+                <ul id="messages">
+                </ul>
+            </div>
+        </div>
+    </div>*@
+
+

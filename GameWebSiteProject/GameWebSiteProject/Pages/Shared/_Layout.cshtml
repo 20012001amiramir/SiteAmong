@@ -15,7 +15,7 @@
         </div>
     </div>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" asp-page="home_reg">AMONGPROFILE</a>
+        <a class="navbar-brand" asp-page="Home_reg">AMONGPROFILE</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,10 +23,10 @@
         <div class="collapse navbar-collapse navbar" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" asp-page="home_reg">Home</a>
+                    <a class="nav-link" asp-page="Home_reg">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="chat.html">Forum</a>
+                    <a class="nav-link" asp-page="ChatPage">Forum</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="costumes_reg.html">Costumes</a>
@@ -44,7 +44,7 @@
                 <input type="text" name="focus" required class="search-box" placeholder="Search" />
             </form>
         </div>
-        <a asp-page="user_profile" class="my-profile">
+        <a asp-page="User_profile" class="my-profile">
             <div class="my-profile-name">
                 My Profile
             </div>
@@ -69,6 +69,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script data-main="scripts/main" src="https://rawgit.com/radu-matei/websocket-manager/master/src/WebSocketManager.Client.TS/dist/WebSocketManager.js"></script>
     <script src="~/js/script.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>

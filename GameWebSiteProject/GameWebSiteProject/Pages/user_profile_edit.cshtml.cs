@@ -55,7 +55,7 @@ namespace GameWebSiteProject.Pages
             user.Sex = NewSex;
             user.About = NewAbout;
             repository.Update(user);
-            return RedirectToPage("user_profile");
+            return RedirectToPage("User_profile");
         }
     }
 }

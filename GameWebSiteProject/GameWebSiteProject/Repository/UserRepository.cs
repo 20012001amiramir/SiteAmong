@@ -29,32 +29,13 @@ namespace GameWebSiteProject.Repository
         {
             DbContext.Update(user);
         }
-        //public void Delete(params string [] identfrs)
-        //{
-        //    using (var command = new SqlCommand("DELETE FROM \"User\" WHERE Username = @username"))
-        //    {
-        //        command.Parameters.Add(new SqlParameter("username", identfrs[0]));
-        //        ExecuteNonQuery(command);
-        //    }
-        //}
-
-        //public IEnumerable<User> GetAll()
-        //{
-        //    using (var command = new SqlCommand("SELECT * FROM \"User\""))
-        //    {
-        //        return GetRecords(command);
-        //    }
-        //}
-
-
-        public void Delete(params string[] identfrs)
+        public void Delete(string column, string value)
         {
             throw new NotImplementedException();
         }
-
         public IEnumerable<User> GetAll()
         {
-            throw new NotImplementedException();
+            return DbContext.GetAll(new User().GetType());
         }
     }
 }

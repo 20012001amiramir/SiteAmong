@@ -12,8 +12,8 @@ namespace GameWebSiteProject.Helpers
         private readonly IRepository<Message> messageRepository;
         public ChatHandler(WebSocketConnectionManager webSocketConnectionManager, IConfiguration configuration) : base(webSocketConnectionManager)
         {
-            this.userRepository = new UserRepository(configuration);
-            this.messageRepository = new MessageRepository(configuration);
+            this.userRepository = new Repository<User>(configuration);
+            this.messageRepository = new Repository<Message>(configuration);
         }
 
         public void SendMessage(string userid, string subject, string content)

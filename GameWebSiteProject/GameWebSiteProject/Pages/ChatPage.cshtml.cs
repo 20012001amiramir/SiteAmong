@@ -14,11 +14,13 @@ namespace GameWebSiteProject.Pages
     {
         private readonly IRepository<Message> messageRepository;
         private readonly IRepository<User> userRepository;
+        public byte[] Avatar { get; set; }
+        public string Username { get; set; }
         public List<Message> SortedHistory { get; set; }
         public ChatPageModel(IConfiguration configuration)
         {
-            this.userRepository = new UserRepository(configuration);
-            this.messageRepository = new MessageRepository(configuration);
+            this.userRepository = new Repository<User>(configuration);
+            this.messageRepository = new Repository<Message>(configuration);
         }
         public IActionResult OnGet()
         {
@@ -34,9 +36,16 @@ namespace GameWebSiteProject.Pages
                 return Page();
             }
         }
-        public User GetUser(Guid Id)
+        public IActionResult OnPostDeleteMessage(Guid Id)
         {
-            return userRepository.GetBy("Id", Id.ToString());
+            messageRepository.Delete("Id", Id.ToString());
+            return RedirectToPage("ChatPage");
+        }
+        public void GetUser(Guid Id)
+        {
+            User user = userRepository.GetBy("Id", Id.ToString());
+            Username = user.Username;
+            Avatar = user.Avatar;
         }
     }
 }

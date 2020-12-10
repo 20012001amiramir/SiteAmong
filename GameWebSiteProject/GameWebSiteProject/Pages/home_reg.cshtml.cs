@@ -13,7 +13,7 @@ namespace GameWebSiteProject.Pages
         public string Username { get; set; }
         public home_regModel(IConfiguration configuration)
         {
-            this.repository = new UserRepository(configuration);
+            this.repository = new Repository<User>(configuration);
         }
         public IActionResult OnGet()
         {

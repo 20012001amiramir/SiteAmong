@@ -58,3 +58,6 @@ D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProjec
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\bin\Debug\netcoreapp3.1\runtimes\win7-x86\native\libuv.dll
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\GameWebSiteProject.csproj.CoreCompileInputs.cache
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\GameWebSiteProject.MvcApplicationPartsAssemblyInfo.cache
+D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_LayoutUnReg.cshtml.g.cs
+D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\Razor\Pages\home_unreg.cshtml.g.cs
+D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\Razor\Pages\PublishWork.cshtml.g.cs

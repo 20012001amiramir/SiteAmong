@@ -1,7 +1,8 @@
 ﻿@page
 @model IndexModel
 @{
-    Layout = null;
+    Layout = "_LayoutUnReg";
+    ViewData["Title"] = "SIGN IN/UP";
 }
 
 <!doctype html>
@@ -45,9 +46,9 @@
                 </div>
                 <div class="sign-up-htm" style="height:120%">
                     <form method="post" asp-page-handler="register" enctype="multipart/form-data">
-                        <img height="150px" width="150px" id="blah" src="#"/>
+                        <img height="150px" width="150px" id="blah" src="#" />
                         <h3 style="color:#9C4973">Your avatar</h3>
-                        <input name="Avatar" type="file" id="imgInp" class="form-control" required/>
+                        <input name="Avatar" type="file" id="imgInp" class="form-control" required />
                         <div class="group">
                             <label for="user" class="label">USERNAME</label>
                             <input name="Username" id="user" type="text" class="input" maxlength="15" required>

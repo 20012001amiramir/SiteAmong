@@ -1,6 +1,7 @@
 ﻿@page
 @model GameWebSiteProject.Pages.ChatPageModel
 @{
+    ViewData["Title"] = "FORUM";
 }
 
 @using Microsoft.AspNetCore.Http;
@@ -12,7 +13,6 @@
             <div id="welcome" style="padding-bottom:10px">
                 <h1><strong>Welcome to Chat!</strong></h1>
                 <input value="@HttpContext.Session.GetString("id")" id="userid" style="display:none" />
-
             </div>
             <div id="input">
                 <input class="form-control" id="subject" placeholder="Enter subject..." />
@@ -23,20 +23,35 @@
                 <ul id="messages" style="list-style-type:none;">
                   @foreach (var x in Model.SortedHistory)
                   {
-                    var user = Model.GetUser(x.User_Id);
-                    <li id="row">
+                      if (x != null)
+                      {
+                          Model.GetUser(x.User_Id);
+                           <li id="row">
                         <div id="message-body">
-                            <div id="desc">
-                                <img id="messageAvatar" src="data:image/jpeg; base64, @(Convert.ToBase64String(user.Avatar))">
-                                <h4> <strong>@user.Username</strong></h4>
+                            <div id="desc">                               
+                                <img id="messageAvatar" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Avatar))">
+                                <h4> <strong>@Model.Username</strong></h4>
                                 <h5> <strong>"@x.Subject"</strong></h5>
                             </div>
                             <div id="message-con">
                                 <p id="messageText"><strong>@x.Content</strong></p>
-                                <strong id="messageDate">@x.DateSent</strong>
+                                <strong id="messageDate">
+                                    @x.DateSent
+                                </strong>
+                                @if (HttpContext.Session.GetString("id") == x.User_Id.ToString())
+                                {
+
+                                    <form method="post">
+                                        <input name="Id" value="@x.Id" style="display:none" />
+                                        <button type="submit" class="btn btn-danger" style="height:40px; width:100px"  asp-page-handler="DeleteMessage">Delete</button>      
+                                    </form>
+                                }
                             </div>
                         </div>
                     </li>
+                      }
+                      
+                   
                   }
                 </ul>
             </div>

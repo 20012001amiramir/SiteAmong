@@ -27,7 +27,7 @@ namespace GameWebSiteProject.Pages
 
         public IndexModel(IConfiguration configuration)
         {
-            this.repository = new UserRepository(configuration);
+            this.repository = new Repository<User>(configuration);
         }
 
         public IActionResult OnGetLogout()
@@ -52,12 +52,15 @@ namespace GameWebSiteProject.Pages
                         
                         User user = new User
                         {
+                            Id = Guid.NewGuid(),
                             Username = Username,
                             Nickname = Nickname,
                             Password = ComputeHash(Password, new MD5CryptoServiceProvider()),
                             Email = Email,
                             Age = GetAge(Birthday),
-                            Avatar = imageData
+                            Avatar = imageData ,                          
+                            Sex = "not defined",
+                            About = "About Me"
                     };
                         repository.Insert(user);
                     }

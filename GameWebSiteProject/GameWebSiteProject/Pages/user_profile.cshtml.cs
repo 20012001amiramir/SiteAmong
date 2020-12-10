@@ -17,7 +17,7 @@ namespace GameWebSiteProject.Pages
         public string About { get; set; }
         public user_profileModel(IConfiguration configuration)
         {
-            this.repository = new UserRepository(configuration);
+            this.repository = new Repository<User>(configuration);
         }
         public IActionResult OnGet()
         {

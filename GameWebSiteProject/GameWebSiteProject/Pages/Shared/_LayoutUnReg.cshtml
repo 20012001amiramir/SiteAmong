@@ -15,7 +15,7 @@
         </div>
     </div>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" asp-page="home_reg">AMONGPROFILE</a>
+        <a class="navbar-brand" asp-page="home_unreg">AMONGPROFILE</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,39 +23,17 @@
         <div class="collapse navbar-collapse navbar" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" asp-page="Home_reg">Home</a>
+                    <a class="nav-link" asp-page="home_unreg">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-page="ChatPage">Forum</a>
+                    <a class="nav-link" href="gallery_unreg.html">Gallery</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="costumes_reg.html">Your works</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="gallery_reg.html">Gallery</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about_reg.html">About</a>
+                    <a class="nav-link" href="about_unreg.html">About</a>
                 </li>
             </ul>
         </div>
-        <div class="search-wrapper">
-            <form>
-                <div class="input-group mb-3">
-                    <input type="text" style="width:500px" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2" equired>
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" asp-page-handler="OnPostSearch" type="submit">Go!</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <a asp-page="User_profile" class="my-profile">
-            <div class="my-profile-name">
-                My Profile
-            </div>
-            <img src="https://img.icons8.com/plasticine/100/000000/among-us.png" class="my-profile-pic" height="45" width="45" />
-        </a>
-        <a asp-page="Index" asp-page-handler="Logout">Logout</a>
+        <a class="sign-button" type="button" asp-page="Index">Sign In</a>
     </nav>
     <div class="container">
         <main role="main" class="pb-3">

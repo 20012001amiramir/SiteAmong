@@ -49,7 +49,10 @@ namespace GameWebSiteProject.DBContext
 
         public void DeleteWhere(string column, string value, Type type)
         {
-            throw new System.NotImplementedException();
+            using (SqlCommand command = DeleteWhereCommandMaker<T>.Create(column, value, type))
+            {
+                ExecuteNonQuery(connection, command);
+            }
         }
           
         public override T PopulateRecord(SqlDataReader reader)

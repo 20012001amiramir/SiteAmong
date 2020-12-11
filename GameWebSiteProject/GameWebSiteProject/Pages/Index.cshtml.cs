@@ -32,7 +32,7 @@ namespace GameWebSiteProject.Pages
 
         public IActionResult OnGetLogout()
         {
-            HttpContext.Session.Remove("id");
+            HttpContext.Session.Remove("username");
             return RedirectToPage("Index");
         }
  
@@ -91,7 +91,7 @@ namespace GameWebSiteProject.Pages
                 };
                 if (user.Password == user_.Password)
                 {
-                    HttpContext.Session.SetString("id", user_.Id.ToString());
+                    HttpContext.Session.SetString("username", Username);
                     if (RememberMe == "on")
                     {
                         var cookieOptions = new CookieOptions

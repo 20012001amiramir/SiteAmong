@@ -12,7 +12,7 @@
         <div class="col-lg-12">
             <div id="welcome" style="padding-bottom:10px">
                 <h1><strong>Welcome to Chat!</strong></h1>
-                <input value="@HttpContext.Session.GetString("id")" id="userid" style="display:none" />
+                <input value="@HttpContext.Session.GetString("username")" id="username" style="display:none" />
             </div>
             <div id="input">
                 <input class="form-control" id="subject" placeholder="Enter subject..." />
@@ -38,7 +38,7 @@
                                 <strong id="messageDate">
                                     @x.DateSent
                                 </strong>
-                                @if (HttpContext.Session.GetString("id") == x.User_Id.ToString())
+                                @if (HttpContext.Session.GetString("username") == Model.Username)
                                 {
 
                                     <form method="post">

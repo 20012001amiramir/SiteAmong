@@ -14,14 +14,16 @@ namespace GameWebSiteProject.Pages
 {
     public class PublishWorkModel : PageModel
     {
-        private readonly IRepository<PeopleWork> repository;
+        private readonly IRepository<PeopleWork> workRepository;
+        private readonly IRepository<User> userRepository;
         public PublishWorkModel(IConfiguration configuration)
         {
-            this.repository = new Repository<PeopleWork>(configuration);
+            this.workRepository = new Repository<PeopleWork>(configuration);
+            this.userRepository = new Repository<User>(configuration);
         }
         public IActionResult OnGet()
         {
-            if (HttpContext.Session.GetString("id") == null)
+            if (HttpContext.Session.GetString("username") == null)
             {
                 return RedirectToPage("Index");
             }
@@ -39,19 +41,18 @@ namespace GameWebSiteProject.Pages
                 imageData = binaryReader.ReadBytes((int)image.Length);
             }
 
-            PeopleWork work = new PeopleWork
+            PeopleWork work = new PeopleWork()
             {
                 Id = Guid.NewGuid(),
-                User_Id = Guid.Parse(HttpContext.Session.GetString("id")),
+                User_Id = userRepository.GetBy("Username", HttpContext.Session.GetString("username")).Id,
                 Name = Name,
                 Description = Description,
                 DateSent = DateTime.Now,
                 Type = Type,
-                Likes = 0,
                 Image = imageData
             };
 
-            repository.Insert(work);
+            workRepository.Insert(work);
 
             return RedirectToPage("user_profile");
         }

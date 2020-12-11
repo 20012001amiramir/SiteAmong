@@ -23,13 +23,13 @@ namespace GameWebSiteProject.Pages
         }
         public IActionResult OnGet()
         {
-            if (HttpContext.Session.GetString("id") == null)
+            if (HttpContext.Session.GetString("username") == null)
             {
                 return RedirectToPage("Index");
             }
             else
             {
-                User user = repository.GetBy("Id", HttpContext.Session.GetString("id"));
+                User user = repository.GetBy("Username", HttpContext.Session.GetString("username"));
                 Avatar = user.Avatar;
                 Age = user.Age;
                 Sex = user.Sex;
@@ -40,7 +40,7 @@ namespace GameWebSiteProject.Pages
         }
         public IActionResult OnPostEdit(IFormFile Avatar, string NewNickname, short NewAge, string NewSex, string NewAbout)
         {
-            User user = repository.GetBy("Id", HttpContext.Session.GetString("id"));
+            User user = repository.GetBy("Username", HttpContext.Session.GetString("username"));
             byte[] imageData = null;
             if (Avatar != null)
             {

@@ -46,21 +46,19 @@ $(document).ready(function () {
 
         connection.start();
 
-        var username;
         var $username = $('#username');
-        var $userid = $('#userid');
         var $subject = $('#subject');
         var $messagecontent = $('#message-content');
     $messagecontent.keyup(function (e) {
         if (e.keyCode == 13) {
-            var userid = $userid.val();
+            var usernameSession = $username.val();
             var subject = $subject.val().trim();
             var content = $messagecontent.val().trim();
             
             if (content.length == 0) {
                 return false;
             }
-            connection.invoke("SendMessage", userid, subject, content);
+            connection.invoke("SendMessage", usernameSession, subject, content);
             $messagecontent.val('');
         }
     });

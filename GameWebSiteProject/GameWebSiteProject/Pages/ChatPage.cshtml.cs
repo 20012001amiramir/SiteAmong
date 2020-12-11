@@ -24,14 +24,13 @@ namespace GameWebSiteProject.Pages
         }
         public IActionResult OnGet()
         {
-            if (HttpContext.Session.GetString("id") == null)
+            if (HttpContext.Session.GetString("username") == null)
             {
                 return RedirectToPage("Index");
             }
             else
             {
                 var records = (List<Message>)messageRepository.GetAll();
-                var users = (List<User>)userRepository.GetAll();
                 SortedHistory = records.OrderBy(x => x.DateSent).ToList();
                 return Page();
             }
@@ -41,9 +40,9 @@ namespace GameWebSiteProject.Pages
             messageRepository.Delete("Id", Id.ToString());
             return RedirectToPage("ChatPage");
         }
-        public void GetUser(Guid Id)
+        public void GetUser(Guid User_Id)
         {
-            User user = userRepository.GetBy("Id", Id.ToString());
+            User user = userRepository.GetBy("Id", User_Id.ToString());
             Username = user.Username;
             Avatar = user.Avatar;
         }

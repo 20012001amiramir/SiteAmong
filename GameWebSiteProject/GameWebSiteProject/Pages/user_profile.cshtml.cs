@@ -21,13 +21,13 @@ namespace GameWebSiteProject.Pages
         }
         public IActionResult OnGet()
         {
-            if (HttpContext.Session.GetString("id") == null)
+            if (HttpContext.Session.GetString("username") == null)
             {
                 return RedirectToPage("Index");
             }
             else
             {
-                User user = repository.GetBy("Id", HttpContext.Session.GetString("id"));
+                User user = repository.GetBy("Username", HttpContext.Session.GetString("username"));
                 Avatar = user.Avatar;
                 Age = user.Age;
                 Sex = user.Sex;

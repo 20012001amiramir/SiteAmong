@@ -21,6 +21,7 @@ $("#imgInp").change(function () {
 
 $(document).ready(function () {
     var connection = new WebSocketManager.Connection("ws://localhost:5000/chat");
+    var connection1 = new WebSocketManager.Connection("ws://localhost:5000/like");
     connection.enableLogging = true;
 
     connection.connectionMethods.onConnected = () => {
@@ -44,7 +45,23 @@ $(document).ready(function () {
         $('#messages').scrollTop($('#messages').prop('scrollHeight'));
         }
 
-        connection.start();
+    connection1.clientMethods["pingLike"] = (likes) => {
+        $('#likeamount').replaceWith('Likes ' + likes);  
+        $('#newlikeamount').html('<p id="likeamount">Likes ' + likes + '</p>');   
+    }
+
+    connection1.start(); 
+
+    var $username = $('#username');
+    var $work = $('#work');
+    $("#like").on("click", function () {
+        var username = $username.val();
+        var workname = $work.val();
+
+        connection1.invoke("LeaveLike", username, workname);
+    });
+
+    connection.start();
 
         var $username = $('#username');
         var $subject = $('#subject');

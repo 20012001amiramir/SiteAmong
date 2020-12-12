@@ -42,7 +42,9 @@ namespace GameWebSiteProject
             app.UseSession();
 
             app.UseWebSockets();
+            app.MapWebSocketManager("/like", serviceProvider.GetService<LikeHandler>());
             app.MapWebSocketManager("/chat", serviceProvider.GetService<ChatHandler>());
+            
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

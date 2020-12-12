@@ -11,14 +11,14 @@ using Microsoft.Extensions.Configuration;
 
 namespace GameWebSiteProject.Pages
 {
-    public class CommunityWorksModel : PageModel
+    public class GalleryRegModel : PageModel
     {
         public List<PeopleWork> Works { get; set; }
         private readonly IRepository<PeopleWork> worksRepository;
         private readonly IRepository<User> userRepository;
         public byte[] Avatar { get; set; }
         public string Username { get; set; }
-        public CommunityWorksModel(IConfiguration configuration)
+        public GalleryRegModel(IConfiguration configuration)
         {
             this.userRepository = new Repository<User>(configuration);
             this.worksRepository = new Repository<PeopleWork>(configuration);
@@ -32,7 +32,7 @@ namespace GameWebSiteProject.Pages
             else
             {
                 var records = (List<PeopleWork>)worksRepository.GetAll();
-                Works = records.OrderByDescending(x => x.DateSent).ToList();
+                Works = records.OrderByDescending(x => x.Likes).ToList();
                 return Page();
             }
         }
@@ -44,10 +44,6 @@ namespace GameWebSiteProject.Pages
         public string GetAuthorUsername(Guid User_Id)
         {
             return userRepository.GetBy("Id", User_Id.ToString()).Username;
-        }
-        public byte[] GetAuthorAvatar(Guid User_Id)
-        {
-            return userRepository.GetBy("Id", User_Id.ToString()).Avatar;
         }
     }
 }

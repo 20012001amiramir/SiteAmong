@@ -19,14 +19,12 @@
                 <span class="label label-primary">Description:</span>
                 <p class="card-text" style="max-height: 100px; overflow-y: auto">@Model.Works[i].Description</p>
                 <p class="card-text">Publish date - @Model.Works[i].DateSent</p>
-                @if (author != HttpContext.Session.GetString("username"))
-                {
-                    <input class="btn btn-success" placeholder="Likes @Model.Works[i].Likes" />
-                }
-                @if (author == HttpContext.Session.GetString("username"))
-                {
-                    <input class="btn btn-success" disabled placeholder="Likes @Model.Works[i].Likes" />
-                }
+                <input id="like" class="btn btn-success" disabled placeholder="Likes @Model.Works[i].Likes" /> 
+                <form method="post">
+                    <input style="display:none" name="workname" value="@Model.Works[i].Name" />
+                    <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
+                </form>
+                
             </div>
         </div>
         @if (i + 1 != Model.Works.Count)
@@ -41,14 +39,11 @@
                     <span class="label label-primary">Description:</span>
                     <p class="card-text" style="max-height:100px; overflow-y:auto">@Model.Works[i + 1].Description</p>
                     <p class="card-text">Publish date - @Model.Works[i + 1].DateSent</p>
-                    @if (author != HttpContext.Session.GetString("username"))
-                    {
-                        <input class="btn btn-success" placeholder="Likes @Model.Works[i+1].Likes" />
-                    }
-                    @if (author == HttpContext.Session.GetString("username"))
-                    {
-                        <input class="btn btn-success" disabled placeholder="Likes @Model.Works[i+1].Likes" />
-                    }
+                    <input id="like" class="btn btn-success" disabled placeholder="Likes @Model.Works[i+1].Likes" />
+                    <form method="post">
+                        <input style="display:none" name="workname" value="@Model.Works[i+1].Name" />
+                        <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
+                    </form>
                 </div>
             </div>
         }

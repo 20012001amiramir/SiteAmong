@@ -23,9 +23,9 @@ namespace GameWebSiteProject.DBContext
             }              
         }
 
-        public T GetBy(string column, string value, Type type)
+        public T GetBy(Type type, params string[]condition)
         {
-            using (SqlCommand command = SelectWhereCommandMaker<T>.Create(column, value, type))
+            using (SqlCommand command = SelectWhereCommandMaker<T>.Create(type, condition))
             {
                 return GetRecord(connection, command);
             }
@@ -47,9 +47,9 @@ namespace GameWebSiteProject.DBContext
             }
         }
 
-        public void DeleteWhere(string column, string value, Type type)
+        public void DeleteWhere(Type type, params string[] conditon)
         {
-            using (SqlCommand command = DeleteWhereCommandMaker<T>.Create(column, value, type))
+            using (SqlCommand command = DeleteWhereCommandMaker<T>.Create(type, conditon))
             {
                 ExecuteNonQuery(connection, command);
             }

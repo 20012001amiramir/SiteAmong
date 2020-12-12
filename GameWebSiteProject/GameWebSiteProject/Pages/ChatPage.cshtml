@@ -41,17 +41,15 @@
                                 @if (HttpContext.Session.GetString("username") == Model.Username)
                                 {
 
-                                    <form method="post">
-                                        <input name="Id" value="@x.Id" style="display:none" />
-                                        <button type="submit" class="btn btn-danger" style="height:40px; width:100px"  asp-page-handler="DeleteMessage">Delete</button>      
-                                    </form>
+                            <form method="post">
+                                <input style="display:none" name="Id" value="@x.Id" />
+                                <button type="submit" class="btn btn-danger" style="height:40px; width:100px" asp-page-handler="DeleteMessage">Delete</button>
+                            </form>
                                 }
                             </div>
                         </div>
                     </li>
-                      }
-                      
-                   
+                      }   
                   }
                 </ul>
             </div>
@@ -64,21 +62,6 @@
     <script data-main="scripts/main" src="https://rawgit.com/radu-matei/websocket-manager/master/src/WebSocketManager.Client.TS/dist/WebSocketManager.js"></script>
 }
 
-@*<div class="row top-space">
-        <div class="col-lg-12">
-            <div id="welcome" style="padding-bottom:10px">
-                <h1><strong>Welcome to Chat!</strong></h1>
-                <input value="@HttpContext.Session.GetString("id")" id="userid" style="display:none" />
-            </div>
-            <div>
-                <input class="form-control" id="subject" placeholder="Enter subject..." />
-                <input class="form-control" id="message-content" placeholder="Enter your message..." />
-            </div>
-            <div id="messenger">
-                <ul id="messages">
-                </ul>
-            </div>
-        </div>
-    </div>*@
+
 
 

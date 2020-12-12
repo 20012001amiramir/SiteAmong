@@ -604,3 +604,23 @@ a {
     font-size: small;
     color: black;
 }
+
+#signup{
+    height:120%;
+}
+
+#YourAvatar{
+	color:#9C4973;
+}
+
+#home-box{
+	background-color:#2B1E39;
+}
+
+#welcome{
+	color:#D9C0E4;
+}
+
+#why{
+	width:384px;
+}

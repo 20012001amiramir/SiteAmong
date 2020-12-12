@@ -6,8 +6,8 @@ namespace GameWebSiteProject.Repository
     {
         void Insert(T item);
         void Update(T item);
-        void Delete(string column, string value);
+        void Delete(params string[] conditon);
         IEnumerable<T> GetAll();
-        T GetBy(string column, string value);
+        T GetBy(params string[] condition);
     }
 }

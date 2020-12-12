@@ -17,7 +17,8 @@ namespace GameWebSiteProject.CommandMaker
             StringBuilder commandText = new StringBuilder();
             var tableName = '\"' + obj.GetType().Name + '\"';
             var columns = CreateValuesString(obj);
-            var where = CommonCommandMaker<T>.WhereConditionCreate("Id");            
+            string[] columnValues ={ "Id" };
+            var where = CommonCommandMaker<T>.WhereConditionCreate(columnValues);            
             commandText.Append($"UPDATE {tableName} SET {columns} {where}");
             return commandText.ToString();
         }

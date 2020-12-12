@@ -14,9 +14,9 @@ namespace GameWebSiteProject.Repository
         {
             DbContext = new DbProvider<T>(configuration);
         }
-        public void Delete(string column, string value)
+        public void Delete(params string[] conditon)
         {
-            DbContext.DeleteWhere(column, value, new T().GetType());
+            DbContext.DeleteWhere(new T().GetType(), conditon);
         }
 
         public IEnumerable<T> GetAll()
@@ -24,9 +24,9 @@ namespace GameWebSiteProject.Repository
             return DbContext.GetAll(new T().GetType());
         }
 
-        public T GetBy(string column, string value)
+        public T GetBy(params string[] conditon)
         {
-            return DbContext.GetBy(column, value, new T().GetType());
+            return DbContext.GetBy(new T().GetType(), conditon);
         }
 
         public void Insert(T item)

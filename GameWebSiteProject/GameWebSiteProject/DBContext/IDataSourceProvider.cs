@@ -6,8 +6,8 @@ namespace GameWebSiteProject.DBContext
     internal interface IDataSourceProvider<T> where T : class
     {
         void Add(T obj);
-        void DeleteWhere(string column, string value, Type type);
-        T GetBy(string column, string value, Type type);
+        void DeleteWhere(Type type, params string[] conditon);
+        T GetBy(Type type, params string[] condition);
         IEnumerable<T> GetAll(Type type);
         void Update(T obj);
     }

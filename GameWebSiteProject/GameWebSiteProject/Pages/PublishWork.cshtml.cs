@@ -14,6 +14,7 @@ namespace GameWebSiteProject.Pages
 {
     public class PublishWorkModel : PageModel
     {
+        public string NameValid { get; set; }
         private readonly IRepository<PeopleWork> workRepository;
         private readonly IRepository<User> userRepository;
         public PublishWorkModel(IConfiguration configuration)
@@ -34,27 +35,36 @@ namespace GameWebSiteProject.Pages
         }
         public IActionResult OnPostPublish(string Name, string Type, IFormFile image, string Description)
         {            
-            byte[] imageData = null;
-
-            using (var binaryReader = new BinaryReader(image.OpenReadStream()))
+            if(workRepository.GetBy("Name", Name) == null)
             {
-                imageData = binaryReader.ReadBytes((int)image.Length);
+                byte[] imageData = null;
+
+                using (var binaryReader = new BinaryReader(image.OpenReadStream()))
+                {
+                    imageData = binaryReader.ReadBytes((int)image.Length);
+                }
+
+                PeopleWork work = new PeopleWork()
+                {
+                    Id = Guid.NewGuid(),
+                    User_Id = userRepository.GetBy("Username", HttpContext.Session.GetString("username")).Id,
+                    Name = Name,
+                    Description = Description,
+                    DateSent = DateTime.Now,
+                    Type = Type,
+                    Image = imageData
+                };
+
+                workRepository.Insert(work);
+
+                return RedirectToPage("user_profile");
             }
-
-            PeopleWork work = new PeopleWork()
+            else
             {
-                Id = Guid.NewGuid(),
-                User_Id = userRepository.GetBy("Username", HttpContext.Session.GetString("username")).Id,
-                Name = Name,
-                Description = Description,
-                DateSent = DateTime.Now,
-                Type = Type,
-                Image = imageData
-            };
-
-            workRepository.Insert(work);
-
-            return RedirectToPage("user_profile");
+                NameValid = "This name is already used";
+                return Page();
+            }
+           
         }
     }
 }

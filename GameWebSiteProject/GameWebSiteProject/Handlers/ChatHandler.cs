@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using WebSocketManager;
 
-namespace GameWebSiteProject.Helpers
+namespace GameWebSiteProject.Handlers
 {
     public class ChatHandler : WebSocketHandler
     {
@@ -16,9 +16,9 @@ namespace GameWebSiteProject.Helpers
             this.messageRepository = new Repository<Message>(configuration);
         }
 
-        public void SendMessage(string usernameSession, string subject, string content)
+        public void SendMessage(string usernameChat, string subject, string content)
         {
-            User user = userRepository.GetBy("username", usernameSession);
+            User user = userRepository.GetBy("username", usernameChat);
             var currentTime = DateTime.Now;
 
             Message message = new Message();

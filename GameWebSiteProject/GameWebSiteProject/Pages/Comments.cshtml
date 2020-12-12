@@ -3,19 +3,54 @@
 @{
 }
 @using Microsoft.AspNetCore.Http;
-<div style="display:flex; flex-direction:row; align-items:center; justify-content:space-evenly; margin-top:50px;">
-    <div class="card" style="width:1080px; height:1100px; overflow-y: auto">
+<div id="OneWork">
+    <div id="OneWorkCard" class="card">
         <img class="card-img-top" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Image))" alt="Card image">
         <div class="card-body">
             <h4 class="card-title">@Model.Name</h4>
-            <p class="card-text">Author - <strong>@Model.AuthorName</strong> <img class="card-img-top" style="width:80px" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.AuthorAvatar))" alt="Card image"></p>
+            <p class="card-text">Author - <strong>@Model.AuthorName</strong> <img id="OneWorkAuthorAvatar" class="card-img-top" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.AuthorAvatar))" alt="Card image"></p>
             <p class="card-text">It's a @Model.Type</p>
             <span class="label label-primary">Description:</span>
-            <p class="card-text" style="max-height: 100px; overflow-y: auto">@Model.Description</p>
+            <p id="OneWorkDesc" class="card-text">@Model.Description</p>
             <p class="card-text">Publish date - @Model.DateSent</p>
-            <input id="username" value="@HttpContext.Session.GetString("username")" style="display:none" />
-            <input id="work" value="@Model.Name" style="display:none" />
+            <input id="usernameLikeAndComment" value="@HttpContext.Session.GetString("username")" />
+            <input id="worknameInput" value="@Model.Name" />
             <button id="like" class="btn btn-success"><div id="newlikeamount"><p id="likeamount">Likes @Model.Likes</p></div></button>
+        </div>
+        <h1>Comments</h1>
+        <div id="input">
+            <input class="form-control" id="foruser" placeholder="Enter the name of the user you want to send comment..." />
+            <input class="form-control" id="commentcontent" placeholder="Enter comment..." />
+        </div>
+        <div id="commenter">
+            <ul id="comments">
+                @foreach (var x in Model.SortedComments)
+                {
+                    if (x != null)
+                    {
+                        if (Model.GetWorkname(x.Work_Id) == HttpContext.Session.GetString("workname"))
+                        {
+                            Model.GetUser(x.User_Id);
+                            <li id="row">
+                                <div id="message-body">
+                                    <div id="desc">
+                                        <img id="messageAvatar" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.CommentAuthorAvatar))">
+                                        <h4> <strong>@Model.CommentAuthor</strong></h4>
+                                        <h5> <strong>To @x.ForUser</strong></h5>
+                                    </div>
+                                    <div id="message-con">
+                                        <p id="messageText"><strong>@x.Content</strong></p>
+                                        <strong id="messageDate">
+                                            @x.DateSent
+                                        </strong>
+
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    }
+                }
+            </ul>
         </div>
     </div>
 </div>

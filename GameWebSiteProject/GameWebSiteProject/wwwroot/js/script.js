@@ -20,19 +20,38 @@ $("#imgInp").change(function () {
 });
 
 $(document).ready(function () {
-    var connection = new WebSocketManager.Connection("ws://localhost:5000/chat");
-    var connection1 = new WebSocketManager.Connection("ws://localhost:5000/like");
-    connection.enableLogging = true;
+    var connectionChat = new WebSocketManager.Connection("ws://localhost:5000/chat");
+    var connectionLike = new WebSocketManager.Connection("ws://localhost:5000/like");
+    var connectionComment = new WebSocketManager.Connection("ws://localhost:5000/comment");
+    connectionChat.enableLogging = true;
+    connectionLike.enableLogging = true;
+    connectionComment.enableLogging = true;
 
-    connection.connectionMethods.onConnected = () => {
+    connectionChat.connectionMethods.onConnected = () => {
 
     }
 
-    connection.connectionMethods.onDisconnected = () => {
+    connectionChat.connectionMethods.onDisconnected = () => {
 
     }
 
-    connection.clientMethods["pingMessage"] = (subject, username, avatar, content, time) => {
+    connectionLike.connectionMethods.onConnected = () => {
+
+    }
+
+    connectionLike.connectionMethods.onDisconnected = () => {
+
+    }
+
+    connectionComment.connectionMethods.onConnected = () => {
+
+    }
+
+    connectionComment.connectionMethods.onDisconnected = () => {
+
+    }
+
+    connectionChat.clientMethods["pingMessage"] = (subject, username, avatar, content, time) => {
 
         var avatarSrc = 'data:image/jpeg; base64,' + avatar;
         $('#messages').append('<li id="row">' +
@@ -45,42 +64,77 @@ $(document).ready(function () {
         $('#messages').scrollTop($('#messages').prop('scrollHeight'));
         }
 
-    connection1.clientMethods["pingLike"] = (likes) => {
+    connectionLike.clientMethods["pingLike"] = (likes) => {
         $('#likeamount').replaceWith('Likes ' + likes);  
         $('#newlikeamount').html('<p id="likeamount">Likes ' + likes + '</p>');   
     }
 
-    connection1.start(); 
+    connectionComment.clientMethods["pingComment"] = (foruser, username, avatar, content, time) => {
+        var avatarSrc = 'data:image/jpeg; base64,' + avatar;
+        $('#comments').append('<li id="row">' +
+            '<div id="message-body">' + '<div id="desc">' + '<img id="messageAvatar" src="' + avatarSrc + '">' +
+            '<h4><strong>' + username + '</strong></h4>' +
+            '<h5><strong>To ' + foruser + '</strong></h5></div>' +
+            '<div id="message-con">' + '<p id="messageText"><strong>' + content + '<strong></p>' +
+            '<strong id="messageDate">"' + time + '"</strong>' +
+            '</div ></div > <li>');
+        $('#comments').scrollTop($('#comments').prop('scrollHeight'));
+    }
 
-    var $username = $('#username');
-    var $work = $('#work');
+    connectionLike.start(); 
+
+    var $usernameLike = $('#usernameLikeAndComment');
+    var $workname = $('#worknameInput');
     $("#like").on("click", function () {
-        var username = $username.val();
-        var workname = $work.val();
+        var usernameLike = $usernameLike.val();
+        var workname = $workname.val();
 
-        connection1.invoke("LeaveLike", username, workname);
+        connectionLike.invoke("LeaveLike", usernameLike, workname);
     });
 
-    connection.start();
+    connectionChat.start();
 
-        var $username = $('#username');
+    var $usernameChat = $('#usernameChat');
         var $subject = $('#subject');
         var $messagecontent = $('#message-content');
     $messagecontent.keyup(function (e) {
         if (e.keyCode == 13) {
-            var usernameSession = $username.val();
+            var usernameChat = $usernameChat.val();
             var subject = $subject.val().trim();
             var content = $messagecontent.val().trim();
             
             if (content.length == 0) {
                 return false;
             }
-            connection.invoke("SendMessage", usernameSession, subject, content);
+            connectionChat.invoke("SendMessage", usernameChat, subject, content);
             $messagecontent.val('');
         }
     });
     $('#messages').scrollTop($('#messages').prop('scrollHeight'));
+
+    connectionComment.start();
+
+    var $usernameComment = $('#usernameLikeAndComment');
+    var $foruser = $('#foruser');
+    var $commentcontent = $('#commentcontent');
+    var $workname = $('#worknameInput');
+    $commentcontent.keyup(function (e) {
+        if (e.keyCode == 13) {
+            var usernameComment = $usernameComment.val();
+            var foruser = $foruser.val();
+            var content = $commentcontent.val().trim();
+            var workname = $workname.val();
+            if (content.length == 0) {
+                return false;
+            }
+            connectionComment.invoke("SendComment", usernameComment, workname, foruser, content);
+            $commentcontent.val('');
+        }
+    });
+    $('#comments').scrollTop($('#comments').prop('scrollHeight'));
 });
+
+
 
 
 

@@ -2,6 +2,7 @@
 @model GameWebSiteProject.Pages.CommunityWorksModel
 @{
     ViewData["Title"] = "COMMUNITY WORKS";
+    if (HttpContext.Session.GetString("username") == null) Layout = "_LayoutUnReg";
 }
 
 @using Microsoft.AspNetCore.Http;
@@ -9,42 +10,48 @@
 @for (int i = 0; i < Model.Works.Count; i = i + 2)
 {
     string author = Model.GetAuthorUsername(Model.Works[i].User_Id);
-    <div style="display:flex; flex-direction:row; align-items:center; justify-content:space-evenly; margin-top:50px;">
-        <div class="card" style="width:540px; height:750px; overflow-y: auto">
+    <div id ="works">
+        <div id="works1" class="card">
             <img class="card-img-top" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Works[i].Image))" alt="Card image">
             <div class="card-body">
                 <h4 class="card-title">@Model.Works[i].Name</h4>
-                <p class="card-text">Author - <strong>@author</strong> <img class="card-img-top" style="width:80px" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.GetAuthorAvatar(Model.Works[i].User_Id)))" alt="Card image"></p>
+                <p class="card-text">Author - <strong>@author</strong> <img id="authorImage" class="card-img-top" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.GetAuthorAvatar(Model.Works[i].User_Id)))" alt="Card image"></p>
                 <p class="card-text">It's a @Model.Works[i].Type</p>
                 <span class="label label-primary">Description:</span>
-                <p class="card-text" style="max-height: 100px; overflow-y: auto">@Model.Works[i].Description</p>
+                <p id="works1Desc" class="card-text">@Model.Works[i].Description</p>
                 <p class="card-text">Publish date - @Model.Works[i].DateSent</p>
-                <input id="like" class="btn btn-success" disabled placeholder="Likes @Model.Works[i].Likes" /> 
-                <form method="post">
-                    <input style="display:none" name="workname" value="@Model.Works[i].Name" />
-                    <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
-                </form>
-                
+                <input id="like" class="btn btn-success" disabled placeholder="Likes @Model.Works[i].Likes" />
+                @if (HttpContext.Session.GetString("username") != null)
+                {
+                    <form method="post">
+                        <input id="workname" name="workname" value="@Model.Works[i].Name" />
+                        <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
+                    </form>
+                }
+
             </div>
         </div>
         @if (i + 1 != Model.Works.Count)
         {
             author = Model.GetAuthorUsername(Model.Works[i + 1].User_Id);
-            <div class="card" style="width:540px; height:750px; overflow-y: auto">
+            <div id="works1" class="card">
                 <img class="card-img-top" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Works[i+1].Image))" alt="Card image">
                 <div class="card-body">
                     <h4 class="card-title">@Model.Works[i + 1].Name</h4>
-                    <p class="card-text">Author - <strong>@author</strong> <img class="card-img-top" style="width:80px" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.GetAuthorAvatar(Model.Works[i+1].User_Id)))" alt="Card image"></p>
+                    <p class="card-text">Author - <strong>@author</strong> <img id="authorImage" class="card-img-top" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.GetAuthorAvatar(Model.Works[i+1].User_Id)))" alt="Card image"></p>
                     <p class="card-text">It's a @Model.Works[i + 1].Type</p>
                     <span class="label label-primary">Description:</span>
-                    <p class="card-text" style="max-height:100px; overflow-y:auto">@Model.Works[i + 1].Description</p>
+                    <p id="works1Desc" class="card-text">@Model.Works[i + 1].Description</p>
                     <p class="card-text">Publish date - @Model.Works[i + 1].DateSent</p>
                     <input id="like" class="btn btn-success" disabled placeholder="Likes @Model.Works[i+1].Likes" />
-                    <form method="post">
-                        <input style="display:none" name="workname" value="@Model.Works[i+1].Name" />
-                        <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
-                    </form>
-                </div>
+                     @if (HttpContext.Session.GetString("username") != null)
+                      {
+                        <form method="post">
+                            <input id="workname" name="workname" value="@Model.Works[i+1].Name" />                          
+                             <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
+                        </form>
+                      }
+                    </div>
             </div>
         }
     </div>

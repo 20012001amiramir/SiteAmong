@@ -429,6 +429,10 @@ a {
     color: rgba(0,0,0,.5);
 }
 
+#mustLogin {
+    background-color: black;
+}
+
 .costumes-wrap {
     display: block;
     margin-left: auto;
@@ -452,12 +456,11 @@ a {
     display: flex;
     flex-direction: column;
     margin-left: auto;
+    max-height: 850px;
     margin-right: auto;
     background-color: rgb(155, 108, 206);
     padding: 10px 10px 10px 10px;
     width: 90%;
-    height: 800px;
-    max-height:800px;
     border: groove;
     border-color: rgb(155, 108, 206);
     overflow-y:auto;
@@ -507,7 +510,9 @@ a {
         outline: none !important;
         box-shadow: inset;
     }
-
+.footer{
+    margin-top:15%;
+}
 .profile-info {
     color: rgba(0,0,0,.5);
     margin-left: 40px;
@@ -529,7 +534,6 @@ a {
     height: 400px;
     padding: 20px 20px 20px 20px;
     margin: 20px 20px 20px 20px;
-    overflow-y:auto;
 }
 
 .form-group {
@@ -562,6 +566,18 @@ a {
     padding-left: 10px;
     padding-right: 10px;
     width: 100%;
+    list-style-type: none;
+}
+
+#comments {
+    background: #808299;
+    position: relative;
+    height: 85vh;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
 }
 
 #row {
@@ -578,6 +594,14 @@ a {
     display: flex;
     flex-direction: row;
 }
+
+#comment-body {
+    height: 170px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
 #desc {
     height: 80px;
     width: 30%;
@@ -589,18 +613,44 @@ a {
     border-radius: 40px;
     height:90%;
 }
+
+#commentAvatar {
+    border-radius: 40px;
+    height: 90%;
+}
+
 #message-con {
     display: flex;
     flex-direction: column;
     align-items:center;
 }
+
+#comment-con {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #messageText {
     overflow-y: auto;
     height: 95%;
     width: 90%;
     color: #E8CDA0;
 }
+
+#commentText {
+    overflow-y: auto;
+    height: 95%;
+    width: 90%;
+    color: #E8CDA0;
+}
+
 #messageDate {
+    font-size: small;
+    color: black;
+}
+
+#commentDate {
     font-size: small;
     color: black;
 }
@@ -617,10 +667,134 @@ a {
 	background-color:#2B1E39;
 }
 
-#welcome{
-	color:#D9C0E4;
+#welcome {
+    color: #D9C0E4;
+    padding-bottom: 10px;
 }
 
 #why{
 	width:384px;
+}
+
+#whyText {
+    color: #D9C0E4;
+}
+
+#OneWork {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+#OneWorkCard {
+    width: 830px;
+    overflow-y: auto;
+}
+
+#OneWorkAuthorAvatar {
+    width: 100px;
+    border-radius: 25px;
+}
+
+#OneWorkDesc {
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+#usernameLikeAndComment {
+    display: none;
+}
+
+#workname {
+    display: none;
+}
+
+#comments {
+    list-style-type: none;
+}
+
+#usernameChat {
+    display: none;
+}
+
+#mistake {
+    display: none;
+}
+
+#Delete {
+    height: 40px;
+    width: 100px;
+}
+
+#works {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+#works1 {
+    width: 540px;
+    height: 750px;
+    overflow-y: auto;
+}
+
+#authorImage {
+    width: 80px;
+}
+
+#works1Desc {
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+#carousel-example-2 {
+    width:1080px;
+    height:550px;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+#slideImage {
+    width: 1080px;
+    height: 550px;
+}
+
+#colorText {
+    color: orangered;
+}
+
+#worknameInput{
+    display:none;
+}
+
+#Publish {
+    display:flex; 
+    flex-direction:column; 
+    align-items:center;
+}
+
+#inputFields {
+    width: 300px;
+}
+
+#imgInp {
+    margin-top:10px;
+}
+
+#newInfoInput {
+    resize:none;
+    height:300px;
+}
+
+#Workimage {
+    color:#9C4973;
+}
+
+#aboutProfile {
+    resize:none;
+    height:300px;
 }

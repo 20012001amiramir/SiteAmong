@@ -1,4 +1,4 @@
-using GameWebSiteProject.Helpers;
+using GameWebSiteProject.Handlers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -44,7 +44,7 @@ namespace GameWebSiteProject
             app.UseWebSockets();
             app.MapWebSocketManager("/like", serviceProvider.GetService<LikeHandler>());
             app.MapWebSocketManager("/chat", serviceProvider.GetService<ChatHandler>());
-            
+            app.MapWebSocketManager("/comment", serviceProvider.GetService<CommentHandler>());
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

@@ -3,9 +3,8 @@ using GameWebSiteProject.Repository;
 using System;
 using Microsoft.Extensions.Configuration;
 using WebSocketManager;
-using System.Collections.Generic;
 
-namespace GameWebSiteProject.Helpers
+namespace GameWebSiteProject.Handlers
 {
     public class LikeHandler : WebSocketHandler
     {
@@ -19,9 +18,9 @@ namespace GameWebSiteProject.Helpers
             this.likeRepository = new Repository<Like>(configuration);
         }
 
-        public void LeaveLike(string username, string workname)
+        public void LeaveLike(string usernameLike, string workname)
         {
-            User user = userRepository.GetBy("username", username);
+            User user = userRepository.GetBy("username", usernameLike);
             PeopleWork work = workRepository.GetBy("name", workname);
 
             Like oldLike = likeRepository.GetBy("Work_Id", work.Id.ToString(), "User_Id", user.Id.ToString() );

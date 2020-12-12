@@ -25,16 +25,9 @@ namespace GameWebSiteProject.Pages
         }
         public IActionResult OnGet()
         {
-            if (HttpContext.Session.GetString("username") == null)
-            {
-                return RedirectToPage("Index");
-            }
-            else
-            {
-                var records = (List<PeopleWork>)worksRepository.GetAll();
-                Works = records.OrderByDescending(x => x.DateSent).ToList();
-                return Page();
-            }
+            var records = (List<PeopleWork>)worksRepository.GetAll();
+            Works = records.OrderByDescending(x => x.DateSent).ToList();
+            return Page();
         }
         public IActionResult OnPostComment(string workname)
         {

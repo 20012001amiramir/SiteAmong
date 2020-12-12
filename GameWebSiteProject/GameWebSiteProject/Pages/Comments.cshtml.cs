@@ -17,18 +17,23 @@ namespace GameWebSiteProject.Pages
 
         private readonly IRepository<PeopleWork> workRepository;
         private readonly IRepository<User> userRepository;
+        private readonly IRepository<Comment> commentRepository;
+        public List<Comment> SortedComments { get; set; }
         public byte[] Image { get; set; }
         public string Name { get; set; }
         public string AuthorName { get; set; }
         public byte[] AuthorAvatar { get; set; }
         public string Type { get; set; }
         public string Description { get; set; }
+        public string CommentAuthor { get; set; }
         public DateTime DateSent { get; set; }
+        public byte[] CommentAuthorAvatar { get; set; }
         public int Likes { get; set; }
         public CommentsModel(IConfiguration configuration)
         {
             this.userRepository = new Repository<User>(configuration);
             this.workRepository = new Repository<PeopleWork>(configuration);
+            this.commentRepository = new Repository<Comment>(configuration);
 
         }
         public IActionResult OnGet()
@@ -42,6 +47,9 @@ namespace GameWebSiteProject.Pages
             {
                 PeopleWork work = workRepository.GetBy("Name", HttpContext.Session.GetString("workname"));
                 User author = userRepository.GetBy("Id", work.User_Id.ToString());
+                var comments = commentRepository.GetAll();
+                SortedComments = comments.OrderBy(x => x.DateSent).ToList();
+             
                 Image = work.Image;
                 Name = work.Name;
                 AuthorName = author.Username;
@@ -53,6 +61,19 @@ namespace GameWebSiteProject.Pages
                 return Page();
             }
         }
-
+        public void GetUser(Guid User_Id)
+        {
+            User user = userRepository.GetBy("Id", User_Id.ToString());
+            CommentAuthor = user.Username;
+            CommentAuthorAvatar = user.Avatar;
+        }
+        public string GetForUser(Guid User_Id)
+        {
+            return userRepository.GetBy("Id", User_Id.ToString()).Username;
+        }
+        public string GetWorkname(Guid Work_Id)
+        {
+            return workRepository.GetBy("Id", Work_Id.ToString()).Name;
+        }
     }
 }

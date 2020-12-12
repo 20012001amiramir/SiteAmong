@@ -1,9 +1,11 @@
 ﻿@page
 @model GameWebSiteProject.Pages.GalleryRegModel
 @{
+    ViewData["Title"] = "TOP OF THIS MONTH";
+    if (HttpContext.Session.GetString("username") == null) Layout = "_LayoutUnReg";
 }
 @using Microsoft.AspNetCore.Http;
-<div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel" style="width:1080px; height:550px; margin-top:50px; margin-bottom:50px">
+<div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-example-2" data-slide-to="1"></li>
@@ -12,23 +14,26 @@
     <div class="carousel-inner" role="listbox">
         @for (int i = 0; i < Model.Works.Count; i++)
         {
-            if (Model.Works[i].Type != "Meme") continue;
+            if (Model.Works[i].Type != "Meme" || Model.Works[i].DateSent.Month != DateTime.Now.Month) continue;
             else
             {
                 <div class="carousel-item active">
                     <div class="view">
-                        <img style="width:1080px; height:550px" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Works[i].Image))"
+                        <img id="slideImage" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Works[i].Image))"
                              alt="First slide" />
                         <div class="mask rgba-black-light"></div>
                     </div>
                     <div class="carousel-caption">
-                        <h2 style="color:orangered" class="h3-responsive">Top meme - @Model.Works[i].Name</h2>
-                        <p><h3 style="color:orangered">Author - @Model.GetAuthorUsername(Model.Works[i].User_Id)</h3></p>
+                        <h2 id="colorText" class="h3-responsive">Top meme - @Model.Works[i].Name</h2>
+                        <p><h3 id="colorText">Author - @Model.GetAuthorUsername(Model.Works[i].User_Id)</h3></p>
                         <input class="btn btn-success" disabled placeholder="Likes @Model.Works[i].Likes" />
-                        <form method="post">
-                            <input style="display:none" name="workname" value="@Model.Works[i].Name" />
-                            <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
-                        </form>
+                        @if (HttpContext.Session.GetString("username") != null)
+                        {
+                            <form method="post">
+                                <input id="workname" name="workname" value="@Model.Works[i].Name" />
+                                <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
+                            </form>
+                        }
                     </div>
                 </div>
                 break;
@@ -37,23 +42,26 @@
         }
         @for (int i = 0; i < Model.Works.Count; i++)
         {
-            if (Model.Works[i].Type != "FanArt") continue;
+            if (Model.Works[i].Type != "FanArt" || Model.Works[i].DateSent.Month != DateTime.Now.Month) continue;
             else
             {
                 <div class="carousel-item">
                     <div class="view">
-                        <img style="width:1080px; height:550px" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Works[i].Image))"
+                        <img id="slideImage" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Works[i].Image))"
                              alt="First slide" />
                         <div class="mask rgba-black-light"></div>
                     </div>
                     <div class="carousel-caption">
-                        <h2 style="color:orangered" class="h3-responsive">Top Fan Art - @Model.Works[i].Name</h2>
-                        <p><h3 style="color:orangered">Author - @Model.GetAuthorUsername(Model.Works[i].User_Id)</h3></p>
+                        <h2 id="colorText" class="h3-responsive">Top Fan Art - @Model.Works[i].Name</h2>
+                        <p><h3 id="colorText">Author - @Model.GetAuthorUsername(Model.Works[i].User_Id)</h3></p>
                         <input class="btn btn-success" disabled placeholder="Likes @Model.Works[i].Likes" />
-                        <form method="post">
-                            <input style="display:none" name="workname" value="@Model.Works[i].Name" />
-                            <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
-                        </form>
+                        @if (HttpContext.Session.GetString("username") != null)
+                        {
+                            <form method="post">
+                                <input id="workname" name="workname" value="@Model.Works[i].Name" />
+                                <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
+                            </form>
+                        }
                     </div>
                 </div>
                 break;
@@ -61,24 +69,27 @@
 
         }
         @for (int i = 0; i < Model.Works.Count; i++)
-        {
-            if (Model.Works[i].Type != "CustomSkin") continue;
+            {
+                if (Model.Works[i].Type != "CustomSkin" || Model.Works[i].DateSent.Month != DateTime.Now.Month) continue;
             else
             {
                 <div class="carousel-item">
                     <div class="view">
-                        <img style="width:1080px; height:550px" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Works[i].Image))"
+                        <img id="slideImage" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Works[i].Image))"
                              alt="First slide" />
                         <div class="mask rgba-black-light"></div>
                     </div>
                     <div class="carousel-caption">
-                        <h2 style="color:orangered" class="h3-responsive">Top Custom Skin - @Model.Works[i].Name</h2>
-                        <p><h3 style="color:orangered">Author - @Model.GetAuthorUsername(Model.Works[i].User_Id)</h3></p>
+                        <h2 id="colorText" class="h3-responsive">Top Custom Skin - @Model.Works[i].Name</h2>
+                        <p><h3 id="colorText">Author - @Model.GetAuthorUsername(Model.Works[i].User_Id)</h3></p>
                         <input class="btn btn-success" disabled placeholder="Likes @Model.Works[i].Likes" />
-                        <form method="post">
-                            <input style="display:none" name="workname" value="@Model.Works[i].Name" />
-                            <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
-                        </form>
+                        @if (HttpContext.Session.GetString("username") != null)
+                        {
+                            <form method="post">
+                                <input id="workname" name="workname" value="@Model.Works[i].Name" />
+                                <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
+                            </form>
+                        }
                     </div>
                 </div>
                 break;

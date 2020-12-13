@@ -24,16 +24,9 @@ namespace GameWebSiteProject.Pages
         }
         public IActionResult OnGet()
         {
-            if (HttpContext.Session.GetString("username") == null)
-            {
-                return RedirectToPage("Index");
-            }
-            else
-            {
-                var records = (List<Message>)messageRepository.GetAll();
-                SortedHistory = records.OrderBy(x => x.DateSent).ToList();
-                return Page();
-            }
+            var records = (List<Message>)messageRepository.GetAll();
+            SortedHistory = records.OrderBy(x => x.DateSent).ToList();
+            return Page();
         }
         public IActionResult OnPostDeleteMessage(Guid Id)
         {

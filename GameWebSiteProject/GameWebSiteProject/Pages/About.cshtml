@@ -1,0 +1,13 @@
+﻿@page
+@model GameWebSiteProject.Pages.AboutModel
+@{
+    ViewData["Title"] = "ABOUT";
+    if (HttpContext.Session.GetString("username") == null) Layout = "_LayoutUnReg";
+}
+
+@using Microsoft.AspNetCore.Http;
+
+<div class="about-box">
+    <h1 class="sitename about-title">So what is our site about?</h1>
+    <a class="about-text">Our site is intended mainly for the community of the game "Among Us". Here you can publish your works(memes, fan art, skin customizations) and show them to other users. You can even get into the top three months of work, these are the works that received the most likes in the current month. You can also comment on other works and leave them likes if you like them. <br /> AND REMEMBER!!! - there is a impostor among us... Enjoy :D</a>
+</div>

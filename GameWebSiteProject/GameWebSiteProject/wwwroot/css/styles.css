@@ -764,7 +764,19 @@ a {
 }
 
 #colorText {
+    color: #747591;
+}
+
+#colorText1 {
     color: orangered;
+}
+
+#colorText2 {
+    color: purple;
+}
+
+#colorText3 {
+    color: firebrick;
 }
 
 #worknameInput{
@@ -790,8 +802,12 @@ a {
     height:300px;
 }
 
+#newInfoStats {
+    width: 300px;
+}
+
 #Workimage {
-    color:#9C4973;
+    color: #9C4973;
 }
 
 #aboutProfile {

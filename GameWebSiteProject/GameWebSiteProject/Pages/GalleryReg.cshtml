@@ -24,7 +24,7 @@
                         <div class="mask rgba-black-light"></div>
                     </div>
                     <div class="carousel-caption">
-                        <h2 id="colorText" class="h3-responsive">Top meme - @Model.Works[i].Name</h2>
+                        <h2 id="colorText1" class="h3-responsive">Top meme - @Model.Works[i].Name</h2>
                         <p><h3 id="colorText">Author - @Model.GetAuthorUsername(Model.Works[i].User_Id)</h3></p>
                         <input class="btn btn-success" disabled placeholder="Likes @Model.Works[i].Likes" />
                         @if (HttpContext.Session.GetString("username") != null)
@@ -52,7 +52,7 @@
                         <div class="mask rgba-black-light"></div>
                     </div>
                     <div class="carousel-caption">
-                        <h2 id="colorText" class="h3-responsive">Top Fan Art - @Model.Works[i].Name</h2>
+                        <h2 id="colorText2" class="h3-responsive">Top Fan Art - @Model.Works[i].Name</h2>
                         <p><h3 id="colorText">Author - @Model.GetAuthorUsername(Model.Works[i].User_Id)</h3></p>
                         <input class="btn btn-success" disabled placeholder="Likes @Model.Works[i].Likes" />
                         @if (HttpContext.Session.GetString("username") != null)
@@ -80,7 +80,7 @@
                         <div class="mask rgba-black-light"></div>
                     </div>
                     <div class="carousel-caption">
-                        <h2 id="colorText" class="h3-responsive">Top Custom Skin - @Model.Works[i].Name</h2>
+                        <h2 id="colorText3" class="h3-responsive">Top Custom Skin - @Model.Works[i].Name</h2>
                         <p><h3 id="colorText">Author - @Model.GetAuthorUsername(Model.Works[i].User_Id)</h3></p>
                         <input class="btn btn-success" disabled placeholder="Likes @Model.Works[i].Likes" />
                         @if (HttpContext.Session.GetString("username") != null)

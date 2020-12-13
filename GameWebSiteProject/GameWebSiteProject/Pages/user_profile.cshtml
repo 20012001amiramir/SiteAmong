@@ -12,8 +12,11 @@
                     <img src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Avatar))" width="315px" />
                 </div>
                 <div>
-                    <a class="profile-avatar-changebutton" type="button" asp-page="User_profile_edit">Edit profile</a>
-                    <a class="profile-avatar-changebutton" type="button" asp-page="PublishWork">Publish your new work</a>
+                    <div id="profileButtons">
+                        <a class="profile-avatar-changebutton" type="button" asp-page="User_profile_edit">Edit profile</a>
+                        <a class="profile-avatar-changebutton" type="button" asp-page="MyWorks">My works</a>
+                        <a class="profile-avatar-changebutton" type="button" asp-page="PublishWork">Publish your new work</a>
+                    </div>                                   
                 </div>
             </div>
             <div class="profile-name">
@@ -25,6 +28,7 @@
             <h5 class="age">Nickname in game: @Model.Nickname</h5>
             <h5 class="age">Age: @Model.Age years</h5>
             <h5 class="sex">Sex: @Model.Sex</h5>
+
         </div>
         <div class="character-box">
             <label for="exampleFormControlSelect1">About You</label>

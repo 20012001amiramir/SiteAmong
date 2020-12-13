@@ -7,10 +7,14 @@
 
 @using Microsoft.AspNetCore.Http;
 
+@if (Model.Works.Count == 0)
+{
+<div class="container" id="noworks"><p><h1><strong>We don't have any works :(<br />So you can be first :)</strong></h1></p></div>
+}
 @for (int i = 0; i < Model.Works.Count; i = i + 2)
 {
     string author = Model.GetAuthorUsername(Model.Works[i].User_Id);
-    <div id ="works">
+    <div id="works">
         <div id="works1" class="card">
             <img class="card-img-top" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Works[i].Image))" alt="Card image">
             <div class="card-body">
@@ -44,14 +48,14 @@
                     <p id="works1Desc" class="card-text">@Model.Works[i + 1].Description</p>
                     <p class="card-text">Publish date - @Model.Works[i + 1].DateSent</p>
                     <input id="like" class="btn btn-success" disabled placeholder="Likes @Model.Works[i+1].Likes" />
-                     @if (HttpContext.Session.GetString("username") != null)
-                      {
+                    @if (HttpContext.Session.GetString("username") != null)
+                    {
                         <form method="post">
-                            <input id="workname" name="workname" value="@Model.Works[i+1].Name" />                          
-                             <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
+                            <input id="workname" name="workname" value="@Model.Works[i+1].Name" />
+                            <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
                         </form>
-                      }
-                    </div>
+                    }
+                </div>
             </div>
         }
     </div>

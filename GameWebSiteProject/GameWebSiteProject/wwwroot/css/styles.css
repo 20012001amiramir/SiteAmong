@@ -763,6 +763,12 @@ a {
     height: 550px;
 }
 
+#profileButtons{
+    display:flex;
+    flex-direction:column;
+    
+}
+
 #colorText {
     color: #747591;
 }
@@ -783,10 +789,15 @@ a {
     display:none;
 }
 
+#noworks{
+    margin-top:50px;
+    margin-left:25%;
+}
+
 #Publish {
-    display:flex; 
-    flex-direction:column; 
-    align-items:center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #inputFields {
@@ -814,3 +825,21 @@ a {
     resize:none;
     height:300px;
 }
+
+#myWorks {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    width: 100%;
+    height: 600px;
+    background-color: #7437B5;
+    overflow-y:auto;
+}
+
+#myWork {
+    width: 600px;
+    margin-top:40px;
+    margin-bottom:40px;
+}
+

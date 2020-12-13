@@ -60,8 +60,9 @@ D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProjec
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\GameWebSiteProject.MvcApplicationPartsAssemblyInfo.cache
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_LayoutUnReg.cshtml.g.cs
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\Razor\Pages\home_unreg.cshtml.g.cs
-D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\Razor\Pages\PublishWork.cshtml.g.cs
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\Razor\Pages\CommunityWorks.cshtml.g.cs
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\Razor\Pages\GalleryReg.cshtml.g.cs
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\Razor\Pages\Comments.cshtml.g.cs
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\Razor\Pages\About.cshtml.g.cs
+D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\Razor\Pages\MyWorks.cshtml.g.cs
+D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\Razor\Pages\PublishWork.cshtml.g.cs

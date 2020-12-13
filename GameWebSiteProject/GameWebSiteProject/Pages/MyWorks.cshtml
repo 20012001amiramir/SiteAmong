@@ -1,0 +1,41 @@
+﻿@page
+@model GameWebSiteProject.Pages.MyWorksModel
+@{
+    ViewData["Title"] = "MY WORKS";
+}
+@using Microsoft.AspNetCore.Http;
+
+<div class="container" id="myWorks">
+    @foreach (var x in Model.Yourworks)
+    {
+        if (x != null)
+        {
+            if (x.User_Id == Model.GetUserId(HttpContext.Session.GetString("username")))
+            {
+                Model.Count++;
+                <div id="myWork" class="card">
+                    <img class="card-img-top" src="data:image/jpeg; base64, @(Convert.ToBase64String(x.Image))" alt="Card image">
+                    <div class="card-body">
+                        <form method="post">
+                            <input id="worknameInput" name="workname" value="@x.Name" />
+                            <h4 class="card-title">@x.Name</h4>
+                            <p class="card-text">@x.Type</p>
+                            <p id="works1Desc" class="card-text">@x.Description</p>
+                            <p class="card-text">Publish date - @x.DateSent</p>
+                            <input id="like" class="btn btn-success" disabled placeholder="Likes @x.Likes" />
+                            <button class="btn btn-danger" asp-page-handler="Delete" type="submit"><p class="card-text">Delete</p></button>
+                        </form>
+                    </div>
+                </div>
+            }
+        }
+    }
+    @if (Model.Count == 0)
+    {
+        <div class="container">
+            <p><h1><strong>You don't have any works :(</strong></h1></p>
+        </div>
+    }
+</div>
+
+

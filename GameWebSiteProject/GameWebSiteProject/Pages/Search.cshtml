@@ -157,8 +157,12 @@
                                 <h5 class="card-title">@x.Name</h5>
                                 <p class="card-text">@x.Type</p>
                                 <p id="works1Desc" class="card-text">@x.Description</p>
-                                <input id="like" class="btn btn-success" disabled placeholder="Likes @x.Likes" />
                                 <p class="card-text">@x.DateSent</p>
+                                <input id="like" class="btn btn-success" disabled placeholder="Likes @x.Likes" />
+                                <form method="post">
+                                    <input id="workname" name="workname" value="@x.Name" />
+                                    <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
+                                </form>
                             </div>
                         </div>
                     }

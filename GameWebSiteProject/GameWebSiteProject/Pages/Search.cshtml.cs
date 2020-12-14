@@ -32,6 +32,12 @@ namespace GameWebSiteProject.Pages
                 return Page();
             }
         }
+        public IActionResult OnPostComment(string workname)
+        {
+            HttpContext.Session.SetString("workname", workname);
+            return RedirectToPage("Comments");
+        }
+
         public IActionResult OnPostFind(string text, string type, string sex, string nickname, int agefrom,
                                        int ageto, string posttype, int likesfrom,
                                        int likesto, DateTime fromdate, DateTime todate)

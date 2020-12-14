@@ -9,5 +9,6 @@ namespace GameWebSiteProject.Repository
         void Delete(params string[] conditon);
         IEnumerable<T> GetAll();
         T GetBy(params string[] condition);
+        IEnumerable<T> GetAllBy(params string[] condition);
     }
 }

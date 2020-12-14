@@ -9,7 +9,9 @@
 
 @if (Model.Works.Count == 0)
 {
-<div class="container" id="noworks"><p><h1><strong>We don't have any works :(<br />So you can be first :)</strong></h1></p></div>
+<div class="about-box">
+    <h1 class="sitename about-title">We don't have any works :(<br />So you can be first :)</h1>
+</div>
 }
 @for (int i = 0; i < Model.Works.Count; i = i + 2)
 {

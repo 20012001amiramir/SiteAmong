@@ -1,6 +1,5 @@
 using GameWebSiteProject.Models;
 using GameWebSiteProject.Repository;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;

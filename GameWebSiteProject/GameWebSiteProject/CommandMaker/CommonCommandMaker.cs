@@ -18,8 +18,7 @@ namespace GameWebSiteProject.CommandMaker
             for(int i = 0; i < columns.Length; i++)
             {
                 command.Parameters.Add(new SqlParameter($"@{columns[i]}", values[i]));
-            }
-            
+            }          
         }
         public static string WhereConditionCreate(string []columns)
         {
@@ -31,8 +30,21 @@ namespace GameWebSiteProject.CommandMaker
             }
             
             where.Append($"\"{columns[columns.Length - 1]}\" = @{columns[columns.Length - 1]}");
-            
-            
+                     
+            return where.ToString();
+        }
+
+        public static string WhereLikeConditionCreate(string[] columns)
+        {
+            var where = new StringBuilder();
+            where.Append("WHERE ");
+            for (int i = 0; i < columns.Length - 1; i++)
+            {
+                where.Append($"\"{columns[i]}\" LIKE '@{columns[i]}' OR ");
+            }
+
+            where.Append($"\"{columns[columns.Length - 1]}\" LIKE @{columns[columns.Length - 1]}");
+
             return where.ToString();
         }
 

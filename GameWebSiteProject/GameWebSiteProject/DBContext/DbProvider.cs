@@ -69,5 +69,13 @@ namespace GameWebSiteProject.DBContext
             }
             return record;
         }
+
+        public IEnumerable<T> GetAllBy(Type type, params string[] condition)
+        {
+            using (SqlCommand command = SelectAllWhereCommandMaker<T>.Create(type, condition))
+            {
+                return GetRecords(connection, command);
+            }
+        }
     }
 }

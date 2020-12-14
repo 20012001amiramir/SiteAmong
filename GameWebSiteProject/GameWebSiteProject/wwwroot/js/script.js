@@ -19,6 +19,8 @@ $("#imgInp").change(function () {
     readURL(this);
 });
 
+ 
+
 $(document).ready(function () {
     var connectionChat = new WebSocketManager.Connection("ws://localhost:5000/chat");
     var connectionLike = new WebSocketManager.Connection("ws://localhost:5000/like");
@@ -134,7 +136,9 @@ $(document).ready(function () {
     $('#comments').scrollTop($('#comments').prop('scrollHeight'));
 });
 
-
+document.getElementById("Dropdown").addEventListener('click', function (event) {  
+    event.stopPropagation();
+}); 
 
 
 

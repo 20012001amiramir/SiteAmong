@@ -10,5 +10,7 @@ namespace GameWebSiteProject.DBContext
         T GetBy(Type type, params string[] condition);
         IEnumerable<T> GetAll(Type type);
         void Update(T obj);
+        IEnumerable<T> GetAllBy(Type type, params string[] condition);
+
     }
 }

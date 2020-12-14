@@ -66,3 +66,4 @@ D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProjec
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\Razor\Pages\About.cshtml.g.cs
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\Razor\Pages\MyWorks.cshtml.g.cs
 D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\Razor\Pages\PublishWork.cshtml.g.cs
+D:\Study 2\Информатика\SiteAmong\GameWebSiteProject\GameWebSiteProject\obj\Debug\netcoreapp3.1\Razor\Pages\Search.cshtml.g.cs

@@ -1,9 +1,6 @@
 ﻿using GameWebSiteProject.DBContext;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GameWebSiteProject.Repository
 {
@@ -37,6 +34,11 @@ namespace GameWebSiteProject.Repository
         public void Update(T item)
         {
             DbContext.Update(item);
+        }
+
+        public IEnumerable<T> GetAllBy(params string[] condition)
+        {
+           return DbContext.GetAllBy(new T().GetType(), condition);
         }
     }
 }

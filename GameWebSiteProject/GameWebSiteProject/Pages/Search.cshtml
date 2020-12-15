@@ -1,0 +1,181 @@
+﻿@page
+@model GameWebSiteProject.Pages.SearchModel
+@{
+    ViewData["Title"] = "SEARCH";
+}
+
+<div id="search">
+    <div class="search-wrapper">
+        <form method="post" asp-page-handler="Find">
+            <div class="input-group">
+                <input name="text" required type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-outline-secondary">Search</button>
+                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div id="Dropdown" class="dropdown-menu">
+                        <div class="dropdown-item">
+                            Type:
+                            <select name="type">
+                                <option>All</option>
+                                <option>User</option>
+                                <option>Post</option>
+                            </select>
+                        </div>
+
+                        <div role="separator" class="dropdown-divider"></div>
+
+                        <div class="dropdown-item">
+                            Sex:
+                            <select name="sex">
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </div>
+
+                        <div class="dropdown-item">
+                            <input name="nickname" placeholder="Nickname in game" />
+                        </div>
+
+                        <div class="dropdown-item">
+                            Age:
+                        </div>
+
+                        <div class="dropdown-item">
+                            <input name="agefrom" placeholder="From" />
+                        </div>
+
+                        <div class="dropdown-item">
+                            <input name="ageto" placeholder="To" />
+                        </div>
+
+                        <div role="separator" class="dropdown-divider"></div>
+
+                        <div class="dropdown-item">
+                            Type:
+                            <select name="posttype">
+                                <option>FanArt</option>
+                                <option>Meme</option>
+                                <option>CustomSkin</option>
+                            </select>
+                        </div>
+
+                        <div class="dropdown-item">
+                            Likes:
+                        </div>
+
+                        <div class="dropdown-item">
+                            <div>
+                                <input name="likesfrom" class="input" placeholder="From">
+                            </div>
+                        </div>
+
+                        <div class="dropdown-item">
+                            <div>
+                                <input name="likesto" class="input" placeholder="To">
+                            </div>
+                        </div>
+
+                        <div class="dropdown-item">
+                            Date range:
+                        </div>
+
+                        <div class="dropdown-item">
+                            <div>
+                                <input name="fromdate" type="date" class="input" placeholder="From">
+                            </div>
+                        </div>
+
+                        <div class="dropdown-item">
+                            <div>
+                                <input name="todate" type="date" class="input" placeholder="To">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="resultsBlock">
+    <div id="results">
+        <div class="container">
+            <h1 class="sitename about-title">Users results</h1>
+            @if (Model.usersResult != null)
+            {
+                foreach (var x in Model.usersResult)
+                {
+                    if (x != null)
+                    {
+                        <div id="userResult">
+                            <div>
+                                <p id="usernameresult">
+                                    @x.Username
+                                </p>
+                                <img id="useravatar" src="data:image/jpeg; base64, @(Convert.ToBase64String(x.Avatar))" />
+                            </div>
+                            <div id="info">                               
+                                <p>
+                                    Nickname in game: @x.Nickname
+                                </p>
+                                <p>
+                                    Age: @x.Age years
+                                </p>
+                                <p>
+                                    Sex: @x.Sex
+                                </p>
+                                <p>
+                                    Description:
+                                </p>
+                                <p>
+                                    <textarea id="infoabout">@x.About</textarea>                      
+                                </p>
+                            </div>
+                        </div>
+                    }
+                }
+                if (Model.usersResult.Count == 0)
+                {
+                    <h1 id="noresult" class="sitename about-title">No results</h1>
+                }
+            }
+        </div>
+    </div>
+    <div id="results">
+        <div class="container">
+            <h1 class="sitename about-title">Posts results</h1>
+            @if (Model.worksResult != null)
+            {
+                foreach (var x in Model.worksResult)
+                {
+                    if (x != null)
+                    {
+                        <div id="work" class="card">
+                            <img id="workImage" class="card-img-top" src="data:image/jpeg; base64, @(Convert.ToBase64String(x.Image))" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">@x.Name</h5>
+                                <p class="card-text">@x.Type</p>
+                                <p id="works1Desc" class="card-text">@x.Description</p>
+                                <p class="card-text">@x.DateSent</p>
+                                <input id="like" class="btn btn-success" disabled placeholder="Likes @x.Likes" />
+                                <form method="post">
+                                    <input id="workname" name="workname" value="@x.Name" />
+                                    <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
+                                </form>
+                            </div>
+                        </div>
+                    }
+
+                }
+                if (Model.worksResult.Count == 0)
+                {
+                    <h1 id="noresult" class="sitename about-title">No results</h1>
+                }
+
+
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,117 @@
+﻿@page
+@model GameWebSiteProject.Pages.GalleryRegModel
+@{
+    ViewData["Title"] = "TOP OF THIS MONTH";
+    if (HttpContext.Session.GetString("username") == null) Layout = "_LayoutUnReg";
+}
+@using Microsoft.AspNetCore.Http;
+@if (Model.Works.Count == 0)
+{
+    <div class="about-box">
+        <h1 class="sitename about-title">We don't have any works :(<br />So you can be first :)</h1>
+    </div>
+}
+else
+{
+    <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-2" data-slide-to="1"></li>
+            <li data-target="#carousel-example-2" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            @for (int i = 0; i < Model.Works.Count; i++)
+            {
+                if (Model.Works[i].Type != "Meme" || Model.Works[i].DateSent.Month != DateTime.Now.Month) continue;
+                else
+                {
+                    <div class="carousel-item active">
+                        <div class="view">
+                            <img id="slideImage" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Works[i].Image))"
+                                 alt="First slide" />
+                            <div class="mask rgba-black-light"></div>
+                        </div>
+                        <div class="carousel-caption">
+                            <h2 id="colorText1" class="h3-responsive">Top meme - @Model.Works[i].Name</h2>
+                            <p><h3 id="colorText">Author - @Model.GetAuthorUsername(Model.Works[i].User_Id)</h3></p>
+                            <input class="btn btn-success" disabled placeholder="Likes @Model.Works[i].Likes" />
+                            @if (HttpContext.Session.GetString("username") != null)
+                            {
+                                <form method="post">
+                                    <input id="workname" name="workname" value="@Model.Works[i].Name" />
+                                    <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                    break;
+                }
+
+            }
+            @for (int i = 0; i < Model.Works.Count; i++)
+            {
+                if (Model.Works[i].Type != "FanArt" || Model.Works[i].DateSent.Month != DateTime.Now.Month) continue;
+                else
+                {
+                    <div class="carousel-item">
+                        <div class="view">
+                            <img id="slideImage" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Works[i].Image))"
+                                 alt="First slide" />
+                            <div class="mask rgba-black-light"></div>
+                        </div>
+                        <div class="carousel-caption">
+                            <h2 id="colorText2" class="h3-responsive">Top Fan Art - @Model.Works[i].Name</h2>
+                            <p><h3 id="colorText">Author - @Model.GetAuthorUsername(Model.Works[i].User_Id)</h3></p>
+                            <input class="btn btn-success" disabled placeholder="Likes @Model.Works[i].Likes" />
+                            @if (HttpContext.Session.GetString("username") != null)
+                            {
+                                <form method="post">
+                                    <input id="workname" name="workname" value="@Model.Works[i].Name" />
+                                    <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                    break;
+                }
+
+            }
+            @for (int i = 0; i < Model.Works.Count; i++)
+            {
+                if (Model.Works[i].Type != "CustomSkin" || Model.Works[i].DateSent.Month != DateTime.Now.Month) continue;
+                else
+                {
+                    <div class="carousel-item">
+                        <div class="view">
+                            <img id="slideImage" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Works[i].Image))"
+                                 alt="First slide" />
+                            <div class="mask rgba-black-light"></div>
+                        </div>
+                        <div class="carousel-caption">
+                            <h2 id="colorText3" class="h3-responsive">Top Custom Skin - @Model.Works[i].Name</h2>
+                            <p><h3 id="colorText">Author - @Model.GetAuthorUsername(Model.Works[i].User_Id)</h3></p>
+                            <input class="btn btn-success" disabled placeholder="Likes @Model.Works[i].Likes" />
+                            @if (HttpContext.Session.GetString("username") != null)
+                            {
+                                <form method="post">
+                                    <input id="workname" name="workname" value="@Model.Works[i].Name" />
+                                    <button class="btn btn-warning" asp-page-handler="Comment" type="submit"><p class="card-text">Leave a comment</p></button>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                    break;
+                }
+
+            }
+        </div>
+        <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+}

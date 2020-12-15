@@ -1,0 +1,71 @@
+﻿@page
+@model GameWebSiteProject.Pages.ChatPageModel
+@{
+    ViewData["Title"] = "FORUM";
+    if (HttpContext.Session.GetString("username") == null) Layout = "_LayoutUnReg";
+}
+
+@using Microsoft.AspNetCore.Http;
+
+
+<div id="chatPageCenter">
+    <div class="row top-space">
+        <div class="col-lg-12">
+            <div id="welcome">
+                <h1><strong>Welcome to Chat!</strong></h1>
+                <input value="@HttpContext.Session.GetString("username")" id="usernameChat" />
+            </div>
+            @if (HttpContext.Session.GetString("username") != null)
+            {
+                <div id="input">
+                    <input class="form-control" id="subject" placeholder="Enter subject..." />
+                    <input class="form-control" id="message-content" placeholder="Enter message..." />
+                </div>
+            }
+
+            <div id="messenger">
+                <ul id="messages">
+                    @foreach (var x in Model.SortedHistory)
+                    {
+                        if (x != null)
+                        {
+                            Model.GetUser(x.User_Id);
+                            <li id="row">
+                                <div id="message-body">
+                                    <div id="desc">
+                                        <img id="messageAvatar" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Avatar))">
+                                        <h4> <strong>@Model.Username</strong></h4>
+                                        <h5> <strong>"@x.Subject"</strong></h5>
+                                    </div>
+                                    <div id="message-con">
+                                        <p id="messageText"><strong>@x.Content</strong></p>
+                                        <strong id="messageDate">
+                                            @x.DateSent
+                                        </strong>
+                                        @if (HttpContext.Session.GetString("username") == Model.Username)
+                                        {
+
+                                            <form method="post">
+                                                <input id="mistake" name="Id" value="@x.Id" />
+                                                <button id="Delete" type="submit" class="btn btn-danger" asp-page-handler="DeleteMessage">Delete</button>
+                                            </form>
+                                        }
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script data-main="scripts/main" src="https://rawgit.com/radu-matei/websocket-manager/master/src/WebSocketManager.Client.TS/dist/WebSocketManager.js"></script>
+}
+
+
+
+

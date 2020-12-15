@@ -1,0 +1,74 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="https://img.icons8.com/nolan/40/among-us.png" type="image/svg">
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div class="navbar-img" id="headpic">
+        <div class="sitename-layout">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" asp-page="home_reg">AMONGPROFILE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse navbar" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="Home_reg">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="ChatPage">Forum</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="CommunityWorks">Community works</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="GalleryReg">MonthTop works</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="About">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="Search">Search <img src="~/css/images/imgonline-com-ua-Resize-WKU2L0Y8ytd25.png"/></a>
+                </li>
+            </ul>
+        </div>
+        <a asp-page="User_profile" class="my-profile">
+            <div class="my-profile-name">
+                My Profile
+            </div>
+            <img src="https://img.icons8.com/plasticine/100/000000/among-us.png" class="my-profile-pic" height="45" width="45" />
+        </a>
+        <a asp-page="Index" asp-page-handler="Logout">Logout</a>
+    </nav>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <div class="footer">
+        <div class="footer-objects">
+            <div class="footer-object">email</div>
+            <a href="#" class="footer-object">tg</a>
+            <a href="#" class="footer-object">vk</a>
+            <div class="footer-object phone">phone number</div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script data-main="scripts/main" src="https://rawgit.com/radu-matei/websocket-manager/master/src/WebSocketManager.Client.TS/dist/WebSocketManager.js"></script>
+    <script src="~/js/script.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>cbf7b5d2-32aa-4ad4-875d-888ac7a5640e</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\images\**" />
+    <Content Remove="wwwroot\images\**" />
+    <EmbeddedResource Remove="wwwroot\images\**" />
+    <None Remove="wwwroot\images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\avatars\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    <PackageReference Include="WebSocketManager" Version="1.0.1" />
+  </ItemGroup>
+
+</Project>

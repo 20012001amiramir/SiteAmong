@@ -1,0 +1,15 @@
+﻿@page
+@model GameWebSiteProject.Pages.home_regModel
+@{
+    ViewData["Title"] = "HOME";
+}
+@using Microsoft.AspNetCore.Http;
+
+<div class="main">
+    <div id="home-box" class="home-box">
+        <h1>
+            <strong id="welcome">Welcome, @Model.Username!</strong>
+            <img src="https://4pubg.com/wp-content/uploads/2020/10/among-us.png" />
+        </h1>
+    </div>
+</div>

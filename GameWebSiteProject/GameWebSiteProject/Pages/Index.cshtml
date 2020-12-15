@@ -1,0 +1,92 @@
+﻿@page
+@model IndexModel
+@{
+    Layout = "_LayoutUnReg";
+    ViewData["Title"] = "SIGN IN/UP";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="https://img.icons8.com/nolan/40/among-us.png" type="image/svg">
+    <link rel="stylesheet" href="~/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Sign in or Sign up</title>
+</head>
+<body>
+    <div class="login-wrap">
+        <div class="login-html">
+            <div class="sitename">
+                <h1>AMONGPROFILE</h1>
+            </div>
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">SIGN IN</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">SIGN UP</label>
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <form method="post" asp-page-handler="login">
+                        <div class="group">
+                            <label for="user" class="label">USERNAME</label>
+                            <input name="Username" id="user" type="text" value="@Request.Cookies["Username"]" class="input" required>
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">PASSWORD</label>
+                            <input name="Password" id="pass" type="password" value="@Request.Cookies["Password"]" class="input" data-type="password" required>
+                        </div>
+                        <span class="text-danger field-validation-valid">@Model.LoginValid</span>
+                        <div class="group">
+                            <input name="RememberMe" id="check" type="checkbox" class="check">
+                            <label for="check"><span class="icon"></span> Remember me</label>
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Sign In">
+                        </div>
+                    </form>
+                </div> 
+                <div id="signup" class="sign-up-htm">
+                    <form method="post" asp-page-handler="register" enctype="multipart/form-data">
+                        <img height="150px" width="150px" id="blah" src="#" />
+                        <h3 id="YourAvatar">Your avatar</h3>
+                        <input name="Avatar" type="file" id="imgInp" class="form-control" required />
+                        <div class="group">
+                            <label for="user" class="label">USERNAME</label>
+                            <input name="Username" id="user" type="text" class="input" maxlength="15" required>
+                            <span class="text-danger field-validation-valid">@Model.UsernameValid</span>
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">NICKNAME IN GAME</label>
+                            <input name="Nickname" type="text" class="input" required>
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">BIRTHDAY</label>
+                            <input name="BirthDay" type="date" class="input" required>
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">PASSWORD</label>
+                            <input name="Password" id="pass" type="password" class="input" placeholder="minimum 1 uppercase letter and 1 digit" data-type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">REPEAT PASSWORD</label>
+                            <input name="RepeatPassword" id="pass" type="password" class="input" data-type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                            <span class="text-danger field-validation-valid">@Model.PasswordValid</span>
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">EMAIL ADDRESS</label>
+                            <input name="Email" id="pass" type="text" class="input email" placeholder="one@two.three" required>
+                            <span class="text-danger field-validation-valid">@Model.EmailValid</span>
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Sign Up">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="~/js/script.js"></script>
+</body>
+</html>

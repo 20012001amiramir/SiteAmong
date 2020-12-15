@@ -1,0 +1,40 @@
+﻿@page
+@model GameWebSiteProject.Pages.PublishWorkModel
+@{
+    ViewData["Title"] = "PUBLISH WORK";
+}
+
+<div class="main">
+    <form method="post" enctype="multipart/form-data">
+        <div class="profile-wrap">
+            <div id="Publish" class="container">
+                <div class="profile-info edit">
+                    <div class="form-group">
+                        <span class="text-danger field-validation-valid">@Model.NameValid</span>
+                        <input id="inputFields" name="Name" required class="form-control" placeholder="Enter your work's name...">
+                    </div>
+                </div>
+                <label for="exampleFormControlSelect1">Choose your work's type</label>
+                <select name="Type" id="inputFields" class="form-control">
+                    <option>FanArt</option>
+                    <option>Meme</option>
+                    <option>CustomSkin</option>
+                </select>
+                <div class="profile-avatar-box">
+                    <div class="profile-avatar">
+                        <h3 id="Workimage">Work's image</h3>
+                        <img id="blah" width="500px" src="#" />
+                    </div>
+                </div>
+            </div>
+            <input name="image" required placeholder="Choose your work's image" type="file" id="imgInp" class="form-control" />
+            <input type="submit" class="profile-avatar-changebutton" asp-page-handler="Publish" value="Publish work" />
+            <div id="newInfo">             
+                <div class="character-box">
+                    <label for="exampleFormControlSelect1">Your work's description</label>
+                    <textarea name="Description" required id="newInfoInput" class="form-control"></textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
